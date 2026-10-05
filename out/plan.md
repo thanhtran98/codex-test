@@ -78,3 +78,21 @@ Toàn bộ nằm trong hạn mức; **poster này không tốn tiền video.**
 1. Sinh 2–3 phương án nền bằng model ảnh, chọn 1 ⇒ thay lớp nền vector, giữ nguyên chữ.
 2. Chạy `mediakit review` để QA bằng mắt máy.
 3. (Tuỳ chọn) `mediakit search` thêm số liệu có nguồn.
+
+---
+
+## 7. Nhà cung cấp ảnh lab — tình trạng (cập nhật 05/10/2026)
+Cấu hình đã có tại `config/image-provider.local.json` (gitignore, không lên repo):
+`base_url=http://117.1.150.235:31000/v1`, `model=wan2.7-image`, `mode=images`, `auth=bearer`.
+
+Kết quả kiểm tra thật:
+| Phép thử | Kết quả |
+|---|---|
+| `GET /v1/models` bằng key mới | **200** — 16 model, gồm `wan2.7-image` và `qwen-image-3.0` (đều có `image-generation`) |
+| `POST /v1/chat/completions` model `deepseek-v4.1-flash` | **200** — key và base_url ĐÚNG |
+| `POST /v1/images/generations` model `wan2.7-image` | **503** `model_not_found`: "No available channel … claimed by a task plugin, which has no enabled channel serving it (distributor)" |
+| `POST /v1/images/generations` model `qwen-image-3.0` | **503** y hệt |
+
+⇒ Lỗi nằm ở **phía máy chủ gateway**, không phải ở `mediakit` (key hợp lệ, đường dẫn đúng, tên model đúng).
+Cần bật kênh (channel) cho model ảnh trong trang quản trị gateway; xong là chạy được ngay, không phải sửa code.
+Lệnh kiểm tra lại: `python tools/mediakit.py image "test, no text" --out out/work/_t.png --ratio 3:4`
