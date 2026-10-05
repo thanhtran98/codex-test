@@ -74,6 +74,14 @@ Việc đầu tiên khi có key $50: chạy một clip Veo lite 4 giây để ki
 - Giọng đọc tiếng Việt của từng model TTS; Veo lite có kèm âm thanh không; lệnh `shot` trên máy bạn (Chromium).
 - Tên model trong bảng giá có thể thay đổi: kiểm tra lại trang bảng giá của BTC trước ngày thi.
 
+## Lab test với nhà cung cấp ảnh bên ngoài (tạm thời)
+Mặc định mọi lệnh đi gateway BTC. Riêng **sinh ảnh** có thể trỏ sang nhà cung cấp khác để thử nghiệm, KHÔNG cần sửa code:
+- Cách 1 — biến môi trường: `MEDIAKIT_IMAGE_BASE_URL`, `MEDIAKIT_IMAGE_API_KEY`, `MEDIAKIT_IMAGE_MODEL`, `MEDIAKIT_IMAGE_MODE` (`images`|`chat`), `MEDIAKIT_IMAGE_RATIO_FIELD` (mặc định `aspect_ratio`, đặt rỗng để không gửi tỷ lệ), `MEDIAKIT_IMAGE_AUTH` (`bearer`|`raw`|`api-key`|`none`), `MEDIAKIT_IMAGE_EXTRA_JSON` (JSON gắn thêm vào body).
+- Cách 2 — file `config/image-provider.local.json` (đã gitignore; mẫu ở `config/image-provider.example.json`).
+- Quay về BTC: bỏ hết biến `MEDIAKIT_IMAGE_*` và xoá/đổi tên file `.local.json`. `mediakit doctor` sẽ hiện đang dùng nhà cung cấp nào.
+- `mediakit spend` KHÔNG đọc được chi phí của nhà cung cấp ngoài; chỉ có sổ cục bộ.
+- **Nhắc lại luật thi:** khi vào đề thật phải dùng gateway của BTC.
+
 ## Mẹo vận hành
 - Bước brief/ý tưởng nên dùng model mạnh hơn (`/model` → `gpt-6.1-sol`), phần dựng dùng `gpt-6-luna`.
 - Mỗi lỗi lặp lại hai lần: thêm một dòng luật vào AGENTS.md.

@@ -7,3 +7,4 @@ tests/tmp/
 __pycache__/
 node_modules/
 .venv/ms-playwright/
+config/image-provider.local.json

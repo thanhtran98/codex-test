@@ -43,6 +43,14 @@ try:
     run("mux + nhạc nền", "mux", "fake.mp4", "--audio", "fake.mp3", "--music", "fake.mp3", "--out", "out/mux2.mp4")
     run("concat", "concat", "fake.mp4", "fake.mp4", "--out", "out/cat.mp4")
     run("doctor (font thiếu nên exit 1 là đúng)", "doctor", expect=1, contains="gateway trả lời")
+    # nhà cung cấp ảnh riêng: ghi đè model qua biến môi trường (dùng cùng gateway giả)
+    r = subprocess.run([sys.executable, KIT, "image", "nhà cung cấp riêng", "--out", "out/e.png"],
+                       cwd=TMP, env=dict(env, MEDIAKIT_IMAGE_MODEL="wan2.7-image"),
+                       capture_output=True, text=True, timeout=90)
+    man = (TMP / "out" / "manifest.jsonl").read_text(encoding="utf-8")
+    prov_ok = r.returncode == 0 and "wan2.7-image" in man
+    print(("PASS " if prov_ok else "FAIL ") + "image: ghi đè model cho nhà cung cấp ảnh riêng")
+    if not prov_ok: fails.append("provider model")
     m = (TMP / "out" / "manifest.jsonl").read_text(encoding="utf-8")
     print(("PASS " if "TESTKEY" not in m else "FAIL ") + "key không lọt vào manifest")
     if "TESTKEY" in m: fails.append("key leak")

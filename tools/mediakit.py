@@ -20,6 +20,57 @@ VIDEO_PRICE = {"veo-3.1-lite-generate-001": (0.05, 0.08), "veo-3.1-fast-generate
                "veo-3.1-generate-001": (0.40, 0.40)}          # (720p, 1080p) mỗi giây
 IMAGE_PRICE = {"nano-banana-2": 0.0672, "nano-banana-2-lite": 0.0336, "nano-banana-pro": 0.134}
 
+# --- Nhà cung cấp ẢNH riêng (lab test) -------------------------------------
+# Cách cấu hình (ưu tiên biến môi trường, sau đó tới file cấu hình):
+#   1. Biến môi trường MEDIAKIT_IMAGE_* ; hoặc
+#   2. File config/image-provider.local.json (đã gitignore) — mẫu ở config/image-provider.example.json
+# Bỏ trống hết -> tự động quay về gateway BTC, không cần sửa code.
+def _load_image_config():
+    """Nạp config ảnh từ file JSON (không chứa key trong repo: file .local.json đã gitignore)."""
+    path = os.environ.get("MEDIAKIT_IMAGE_CONFIG") or "config/image-provider.local.json"
+    f = pathlib.Path(path)
+    if not f.is_file():
+        return {}
+    try:
+        return json.loads(f.read_text(encoding="utf-8"))
+    except ValueError:
+        die(f"{path} không phải JSON hợp lệ.")
+
+
+_IMGCFG = _load_image_config()
+
+
+def _cfg(env_name, json_key, default=""):
+    v = os.environ.get(env_name)
+    if v not in (None, ""):
+        return v
+    v = _IMGCFG.get(json_key)
+    return default if v in (None, "") else str(v)
+
+
+IMG_BASE = _cfg("MEDIAKIT_IMAGE_BASE_URL", "base_url").rstrip("/")
+IMG_KEY = _cfg("MEDIAKIT_IMAGE_API_KEY", "api_key").strip()
+IMG_MODE = (_cfg("MEDIAKIT_IMAGE_MODE", "mode", "images") or "images").strip().lower()   # images | chat
+IMG_MODEL = _cfg("MEDIAKIT_IMAGE_MODEL", "model").strip()
+IMG_RATIO_FIELD = _cfg("MEDIAKIT_IMAGE_RATIO_FIELD", "ratio_field", "aspect_ratio").strip()      # rỗng = không gửi tỷ lệ
+IMG_AUTH = (_cfg("MEDIAKIT_IMAGE_AUTH", "auth", "bearer") or "bearer").strip().lower()    # bearer|raw|api-key|none
+IMG_EXTRA = _cfg("MEDIAKIT_IMAGE_EXTRA_JSON", "extra_json").strip()                         # JSON gắn thêm vào body
+
+
+def image_provider():
+    """(base, key, mode, model_env, ratio_field, auth, extra_json). base rỗng -> gateway BTC."""
+    return (IMG_BASE or BASE, IMG_KEY or KEY, IMG_MODE, IMG_MODEL,
+            IMG_RATIO_FIELD, IMG_AUTH, IMG_EXTRA)
+
+
+def image_extra_body():
+    if not IMG_EXTRA:
+        return {}
+    try:
+        return json.loads(IMG_EXTRA)
+    except ValueError:
+        die("MEDIAKIT_IMAGE_EXTRA_JSON không phải JSON hợp lệ.")
+
 
 def load_key():
     k = os.environ.get("THUCCHIEN_API_KEY", "").strip()
@@ -35,7 +86,11 @@ KEY = load_key()
 
 
 def die(msg):
-    sys.exit(("LOI: " + str(msg)).replace(KEY, "***") if KEY else "LOI: " + str(msg))
+    text = "LOI: " + str(msg)
+    for k in (KEY, IMG_KEY):
+        if k:
+            text = text.replace(k, "***")
+    sys.exit(text)
 
 
 def need_key():
@@ -56,12 +111,25 @@ def cost_of(r, est=None):
     return {"cost": float(h)} if h else ({"est_cost": round(est, 4)} if est is not None else {})
 
 
-def req(method, path, retries=4, root=False, **kw):
+def req(method, path, retries=4, root=False, base=None, key=None, auth="bearer", **kw):
     """Gọi gateway. Tự thử lại khi 429 (không phải hết budget)/5xx/lỗi mạng; 404 thì thử đường dẫn có/không có /v1.
-    Body tệp phải là bytes (không phải file handle) để thử lại không bị rỗng."""
-    need_key()
-    bases = [ROOT] if root else [BASE, ROOT if BASE != ROOT else BASE + "/v1"]
-    headers = {"Authorization": f"Bearer {KEY}"}
+    `base`/`key` để dùng nhà cung cấp khác (mặc định: gateway BTC). Body tệp phải là bytes để thử lại không bị rỗng."""
+    key = key or KEY
+    if not key:
+        die("Thiếu key. Đặt THUCCHIEN_API_KEY (hoặc file ~/.thucchien/key). Chạy `mediakit doctor` để kiểm tra.")
+    b = (base or BASE).rstrip("/")
+    if b == BASE.rstrip("/"):
+        bases = [ROOT] if root else [BASE, ROOT if BASE != ROOT else BASE + "/v1"]
+    else:
+        bases = [b]
+    if auth == "none":
+        headers = {}
+    elif auth == "api-key":
+        headers = {"api-key": key}
+    elif auth == "raw":
+        headers = {"Authorization": key}
+    else:
+        headers = {"Authorization": f"Bearer {key}"}
     last = "chưa gọi được"
     for i in range(retries):
         try:
@@ -132,23 +200,35 @@ def chat_text(r):
 # ---------------------------------------------------------------- lệnh
 def cmd_image(a):
     p = pathlib.Path(a.out); p.parent.mkdir(parents=True, exist_ok=True)
-    nonce = f"\n\n(Mã biến thể {random.randint(1, 99999)}: không phải nội dung ảnh, tuyệt đối không vẽ chữ hay số.)"
+    base, key, mode, model_env, ratio_field, auth, _extra = image_provider()
+    model = model_env or a.model
     ratio = norm_ratio(a.ratio)
+    nonce = "\n\n(Mã biến thể: không phải nội dung ảnh, tuyệt đối không vẽ chữ hay số.)"
     if a.ref:
-        if a.model.startswith("gpt-image"):
+        if base == BASE and model.startswith("gpt-image"):
             die("--ref chỉ hỗ trợ model nano-banana-*. Dùng --model nano-banana-2.")
         parts = [{"type": "text", "text": f"{a.prompt}\nTỷ lệ khung hình đầu ra: {ratio}. Giữ nhất quán với ảnh tham chiếu.{nonce}"}]
         parts += [{"type": "image_url", "image_url": {"url": data_url(x)}} for x in a.ref]
-        r = req("POST", "/chat/completions", json={"model": a.model, "messages": [{"role": "user", "content": parts}]})
+        r = req("POST", "/chat/completions", base=base, key=key, auth=auth,
+                json={"model": model, "messages": [{"role": "user", "content": parts}]})
+    elif mode == "chat":
+        content = [{"type": "text", "text": a.prompt + nonce}]
+        if IMG_RATIO_FIELD:
+            content[0]["text"] = f"{a.prompt}\nTỷ lệ khung hình đầu ra: {ratio}.{nonce}"
+        body = {"model": model, "messages": [{"role": "user", "content": content}]}
+        body.update(image_extra_body())
+        r = req("POST", "/chat/completions", base=base, key=key, auth=auth, json=body)
     else:
-        body = {"model": a.model, "prompt": a.prompt + nonce}
-        if a.model.startswith("gpt-image"):
+        body = {"model": model, "prompt": a.prompt + nonce}
+        if model.startswith("gpt-image"):
             body.update(size=a.size, quality=a.quality)
-        else:
-            body["aspect_ratio"] = ratio
-        r = req("POST", "/images/generations", json=body)
+        elif IMG_RATIO_FIELD:
+            body[IMG_RATIO_FIELD] = ratio
+        body.update(image_extra_body())
+        r = req("POST", "/images/generations", base=base, key=key, auth=auth, json=body)
     p.write_bytes(extract_image(r.json()))
-    log("image", model=a.model, ratio=ratio, ref=a.ref, prompt=a.prompt, file=str(p), **cost_of(r, IMAGE_PRICE.get(a.model)))
+    log("image", model=model, ratio=ratio, ref=a.ref, provider=("gateway BTC" if base == BASE else base),
+        prompt=a.prompt, file=str(p), **cost_of(r, IMAGE_PRICE.get(model)))
     print(p)
 
 
@@ -277,16 +357,21 @@ def local_ledger():
 
 def cmd_spend(a):  # ngân sách còn lại; /team/info là nơi có số liệu cả đội
     print(f"sổ cục bộ (manifest, ước tính): ${local_ledger()}")
-    ki = req("GET", "/key/info", root=True).json()
-    info = ki.get("info", ki)
-    print(f"key: spend=${info.get('spend')}")
-    tid = info.get("team_id")
-    if tid:
-        ti = req("GET", "/team/info", root=True, params={"team_id": tid}).json()
-        t = ti.get("team_info", ti)
-        print(f"team: spend=${t.get('spend')} max_budget=${t.get('max_budget')}")
-    else:
-        print("không thấy team_id; xem trang Kiểm tra chi tiêu của BTC")
+    if IMG_BASE:
+        print(f"LƯU Ý: ảnh đang đi nhà cung cấp riêng ({IMG_BASE}); số dưới đây của gateway BTC KHÔNG gồm chi phí ảnh.")
+    try:
+        ki = req("GET", "/key/info", root=True).json()
+        info = ki.get("info", ki)
+        print(f"key: spend=${info.get('spend')}")
+        tid = info.get("team_id")
+        if tid:
+            ti = req("GET", "/team/info", root=True, params={"team_id": tid}).json()
+            t = ti.get("team_info", ti)
+            print(f"team: spend=${t.get('spend')} max_budget=${t.get('max_budget')}")
+        else:
+            print("không thấy team_id; xem trang Kiểm tra chi tiêu của BTC")
+    except SystemExit:
+        print("không đọc được số của gateway BTC (key lỗi/không kết nối); sổ cục bộ ở trên vẫn dùng được.")
 
 
 def cmd_mux(a):  # ghép video + giọng đọc (+ nhạc nền); mặc định bỏ âm thanh gốc của Veo
@@ -332,6 +417,13 @@ def cmd_doctor(a):  # kiểm tra môi trường, không tốn tiền
             row("gateway trả lời /models", r.status_code == 200, f"(HTTP {r.status_code})")
         except requests.RequestException as e:
             row("gateway trả lời /models", False, type(e).__name__)
+    if IMG_BASE:
+        row("ảnh đang dùng nhà cung cấp riêng", True,
+            f"({IMG_BASE} · mode={IMG_MODE} · auth={IMG_AUTH}"
+            + (f" · model={IMG_MODEL}" if IMG_MODEL else "") + ")")
+        row("có key cho nhà cung cấp ảnh", bool(IMG_KEY), "" if IMG_KEY else "-> thiếu MEDIAKIT_IMAGE_API_KEY")
+    else:
+        row("ảnh đang dùng gateway BTC", True, "(bỏ trống MEDIAKIT_IMAGE_* để quay về BTC)")
     sys.exit(0 if ok else 1)
 
 
