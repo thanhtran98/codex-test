@@ -324,7 +324,7 @@ def cmd_doctor(a):  # kiểm tra môi trường, không tốn tiền
         row("playwright", True)
     except ImportError:
         row("playwright", False, "-> pip install playwright && python -m playwright install chromium")
-    fonts = [f for f in pathlib.Path("assets/fonts").glob("*") if f.suffix.lower() in (".ttf", ".otf", ".woff", ".woff2")]
+    fonts = [f for f in pathlib.Path("assets/fonts").rglob("*") if f.suffix.lower() in (".ttf", ".otf", ".woff", ".woff2")]
     row("font tiếng Việt trong assets/fonts/", fonts, f"({len(fonts)} file)")
     if KEY:
         try:

@@ -58,3 +58,23 @@ Toàn bộ nằm trong hạn mức; **poster này không tốn tiền video.**
 3. Cho phép cài `playwright` + Chromium và tải 1 font tiếng Việt vào `assets/fonts/`?
 4. Có cần P2 (bản vuông cho feed) và P3 (thêm số liệu có nguồn) không?
 5. Bạn có logo/kênh/slogan/số liệu thật để mình chèn nguyên bản không? (nếu có, bỏ vào `assets/input/`)
+
+---
+
+## 6. Nhật ký thực hiện (cập nhật 05/10/2026)
+### Đã gỡ chặn
+- **Font:** bạn thêm Be Vietnam Pro; đã sửa `doctor` tìm font bằng `rglob` (trước đó `glob` bỏ sót font trong thư mục con) → 162 file, ĐẠT.
+- **Playwright:** cài trong `.venv` (Homebrew Python chặn pip toàn cục); Chromium tải vào `.venv/ms-playwright` để tránh ghi `~/Library/Caches`.
+  Thêm `tools/render.sh` để xuất PNG/PDF; cần chạy ngoài sandbox vì Chromium bị chặn mach port.
+- **git:** đã có repo, commit gốc `a782659 khung ban dau`.
+### Còn chặn
+- **Gateway 401:** key `aitc…8b75` không phải key `sk-` của gateway. Chưa sinh được ảnh AI và chưa chạy `review`.
+### Đã giao (không tốn tiền gateway)
+- `out/final/poster-doi-mu-bao-hiem.png` (1080×1350) — bản hoàn chỉnh đầu tiên.
+- `out/final/poster-doi-mu-bao-hiem-vuong.png` (1080×1080) — bản cho feed.
+- Nền và hình là vector SVG + CSS, chữ overlay bằng HTML/CSS (Be Vietnam Pro), hoàn toàn không dùng model ảnh ⇒ không có rủi ro vẽ sai chữ.
+- Chi phí tới giờ: **$0.00**.
+### Việc kế tiếp khi có gateway
+1. Sinh 2–3 phương án nền bằng model ảnh, chọn 1 ⇒ thay lớp nền vector, giữ nguyên chữ.
+2. Chạy `mediakit review` để QA bằng mắt máy.
+3. (Tuỳ chọn) `mediakit search` thêm số liệu có nguồn.
