@@ -1,0 +1,24 @@
+# Chép file này thành ~/.codex/thucchien.config.toml  (Windows: %USERPROFILE%\.codex\thucchien.config.toml)
+# Chạy: codex --profile thucchien   (đặt THUCCHIEN_API_KEY trong môi trường trước)
+# Dòng model_provider PHẢI nằm trước mọi khối [...].
+model = "gpt-6-luna"
+model_provider = "thucchien"
+model_reasoning_effort = "medium"
+approval_policy = "on-request"
+sandbox_mode = "workspace-write"
+
+[sandbox_workspace_write]
+network_access = true      # bắt buộc: mediakit phải gọi được gateway
+
+# CHƯA KIỂM CHỨNG: theo hiểu biết của người soạn, Codex mặc định lọc khỏi lệnh shell các biến có tên chứa
+# KEY/SECRET/TOKEN, khiến mediakit không thấy THUCCHIEN_API_KEY. Khối dưới tắt việc lọc đó.
+# Nếu Codex báo lỗi cấu hình ở khối này: xóa nó và dùng phương án file key (xem README_SETUP.md, Bước 2b).
+[shell_environment_policy]
+ignore_default_excludes = true
+exclude = ["AI_LOG_*", "GITHUB_*", "GH_*", "AWS_*", "OPENAI_*", "ANTHROPIC_*"]
+
+[model_providers.thucchien]
+name = "AI Thực Chiến"
+base_url = "https://api.thucchien.ai/v1"
+env_key = "THUCCHIEN_API_KEY"
+wire_api = "responses"

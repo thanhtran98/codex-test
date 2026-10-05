@@ -1,0 +1,7 @@
+.env
+.thucchien/
+*.key
+out/work/
+tests/tmp/
+__pycache__/
+node_modules/
