@@ -189,7 +189,7 @@ function renderPlans(){
   <div class="result-days">${daysHtml}</div>
   <div class="cost-panel">
     <div class="cost-line"><span>Vé tham quan và ăn uống</span><b>${formatMoney(Number(b.tickets?.total||0)+Number(b.meals?.total||0))}</b></div>
-    <div class="cost-line cost-hotel"><span>Khách sạn (${Number(b.accommodation?.nights||0)} đêm)</span><span><b>${accommodationBase?`${formatMoney(accommodationLow)} – ${formatMoney(accommodationHigh)}`:"Không phát sinh"}</b><a href="https://www.traveloka.com/" target="_blank" rel="noopener noreferrer" aria-label="Tìm khách sạn trên Traveloka">Xem khách sạn ↗</a></span></div>
+    <div class="cost-line cost-hotel"><span>Khách sạn (${Number(selected.budget?.days||0)} ngày · ${Number(b.accommodation?.nights||0)} đêm theo lộ trình)</span><span><b>${accommodationBase?`${formatMoney(accommodationLow)} – ${formatMoney(accommodationHigh)}`:"Không phát sinh"}</b><a href="https://www.traveloka.com/" target="_blank" rel="noopener noreferrer" aria-label="Tìm khách sạn trên Traveloka">Xem khách sạn ↗</a></span></div>
     <div class="cost-line"><span>Di chuyển giữa các điểm</span><b>${formatMoney(b.transport?.cost||0)}</b></div>
     <div class="cost-line"><span>Dự phòng 8%</span><b>${formatMoney(b.contingency||0)}</b></div>
     <div class="cost-panel-top"><b>Tổng dự kiến cho cả nhóm*</b><strong>${formatMoney(b.total)}</strong></div>
