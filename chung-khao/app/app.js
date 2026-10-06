@@ -89,7 +89,7 @@ setInterval(() => updateHeroSlide(heroIndex + 1), 5000);
 function escapeHtml(value){return String(value).replace(/[&<>"']/g,char=>({"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;","'":"&#39;"}[char]));}
 let placeFilter="all";
 let placePage=1;
-function getPlacePageSize(){return window.innerWidth<=600?3:(window.innerWidth<=1000?6:12);}
+function getPlacePageSize(){return window.innerWidth<=600?2:(window.innerWidth<=1000?4:8);}
 function renderPlaces(filter=placeFilter){
  placeFilter=filter;
  const chosen=places.filter(place=>filter==="all"||place.filter===filter||(filter==="near"&&place.near));
@@ -98,7 +98,7 @@ function renderPlaces(filter=placeFilter){
  placePage=Math.min(placePage,pageCount);
  const start=(placePage-1)*pageSize;
  const visible=chosen.slice(start,start+pageSize);
- grid.innerHTML=visible.map((place,index)=>`<article class="destination-card"><div class="destination-image${place.image?"":" is-placeholder"}">${place.image?`<img src="${place.image}" alt="${escapeHtml(place.alt)}" loading="lazy"/>`:`<div class="image-placeholder" aria-label="Chưa có ảnh đã xác minh đúng địa điểm"><span>CHƯA CÓ ẢNH<br/>ĐÃ XÁC MINH</span><i aria-hidden="true">✳</i></div>`}<span class="image-index">ĐIỂM ${String(start+index+1).padStart(2,"0")}</span></div><div class="card-body">${place.imageSource?`<a class="photo-credit" href="${escapeHtml(place.imageSource)}" target="_blank" rel="noopener noreferrer" aria-label="Nguồn ảnh ${escapeHtml(place.name)}">Ảnh: ${escapeHtml(place.imageCredit)} </a>`:""}<div class="card-meta"><span>${escapeHtml(place.category)}</span></div><h3>${escapeHtml(place.name)}</h3><a class="place-source" href="${escapeHtml(place.source)}" target="_blank" rel="noopener noreferrer" aria-label="Đọc nguồn giới thiệu ${escapeHtml(place.name)}">Đọc giới thiệu · ${escapeHtml(place.sourceLabel)} </a><div class="card-foot"><span class="card-cost">${escapeHtml(place.feeLabel)}<small>${escapeHtml(place.distance)}</small></span></div></div></article>`).join("");
+ grid.innerHTML=visible.map((place,index)=>`<article class="destination-card"><div class="destination-image${place.image?"":" is-placeholder"}">${place.image?`<img src="${place.image}" alt="${escapeHtml(place.alt)}" loading="lazy"/>`:`<div class="image-placeholder" aria-label="Chưa có ảnh đã xác minh đúng địa điểm"><span>CHƯA CÓ ẢNH<br/>ĐÃ XÁC MINH</span><i aria-hidden="true">✳</i></div>`}<span class="image-index">ĐIỂM ${String(start+index+1).padStart(2,"0")}</span></div><div class="card-body"><div class="card-meta"><span>${escapeHtml(place.category)}</span></div><h3>${escapeHtml(place.name)}</h3><a class="place-source" href="${escapeHtml(place.source)}" target="_blank" rel="noopener noreferrer" aria-label="Đọc nguồn giới thiệu ${escapeHtml(place.name)}">Đọc giới thiệu · ${escapeHtml(place.sourceLabel)} </a><div class="card-foot"><span class="card-cost">${escapeHtml(place.feeLabel)}<small>${escapeHtml(place.distance)}</small></span></div></div></article>`).join("");
  filterResult.textContent=`${chosen.length} điểm · Trang ${placePage}/${pageCount}`;
  destinationPagination.innerHTML=pageCount>1?`<button type="button" data-page="prev" ${placePage===1?"disabled":""}>← Trang trước</button><span>Trang ${placePage} / ${pageCount}</span><button type="button" data-page="next" ${placePage===pageCount?"disabled":""}>Trang sau →</button>`:"";
 }
