@@ -142,6 +142,9 @@ function renderPlans(){
   const selected = opts.find(o=>o.code===state.selectedCode) || opts[0];
   const b = selected.budget.breakdown;
   const check = selected.budget_check;
+  const accommodationBase = Number(b.accommodation?.cost||0);
+  const accommodationLow = accommodationBase ? Math.round(accommodationBase*.85/10000)*10000 : 0;
+  const accommodationHigh = accommodationBase ? Math.round(accommodationBase*1.2/10000)*10000 : 0;
   const result = document.querySelector("#result-content");
   const optionCards = opts.map(o=>{
     const ob = o.budget.breakdown;
@@ -185,7 +188,14 @@ function renderPlans(){
   <div class="day-tabs" role="tablist" aria-label="Chọn ngày trong hành trình">${dayTabs}</div>
   <div class="result-days">${daysHtml}</div>
   <p class="estimate-disclaimer">*Chi phí từng mục là ước tính cho cả nhóm; chưa phân bổ chi phí lưu trú, di chuyển và khoản dự phòng.</p>
-  <div class="cost-panel"><div class="cost-panel-top"><b>Tổng dự kiến cho cả nhóm*</b><strong>${formatMoney(b.total)}</strong></div><small>*Đã gồm vé, ăn, ở, di chuyển và dự phòng 8%. Chưa gồm chi phí đến/rời vùng và mua sắm.</small></div>
+  <div class="cost-panel">
+    <div class="cost-line"><span>Vé tham quan và ăn uống</span><b>${formatMoney(Number(b.tickets?.total||0)+Number(b.meals?.total||0))}</b></div>
+    <div class="cost-line cost-hotel"><span>Khách sạn (${Number(b.accommodation?.nights||0)} đêm)</span><span><b>${accommodationBase?`${formatMoney(accommodationLow)} – ${formatMoney(accommodationHigh)}`:"Không phát sinh"}</b><a href="https://www.traveloka.com/" target="_blank" rel="noopener noreferrer" aria-label="Tìm khách sạn trên Traveloka">Xem khách sạn ↗</a></span></div>
+    <div class="cost-line"><span>Di chuyển giữa các điểm</span><b>${formatMoney(b.transport?.cost||0)}</b></div>
+    <div class="cost-line"><span>Dự phòng 8%</span><b>${formatMoney(b.contingency||0)}</b></div>
+    <div class="cost-panel-top"><b>Tổng dự kiến cho cả nhóm*</b><strong>${formatMoney(b.total)}</strong></div>
+    <small>*Tổng sử dụng mức khách sạn tham khảo trong dữ liệu. Khoảng giá phòng có thể thay đổi theo ngày lưu trú; chưa gồm chi phí đến/rời vùng và mua sắm.</small>
+  </div>
   <div class="cost-warning">${escapeHtml(check.status_text)}. ${check.status==="exceeded"?"Chọn ngân sách cao hơn hoặc đổi điểm để giảm chi phí.":"Các khoản được tính theo dữ liệu tham khảo, cần xác nhận với đơn vị cung cấp."}</div>
   <div class="result-swap-row">${swapRow}</div>
   ${aiHtml}
