@@ -110,7 +110,7 @@ const routeInfo={
 function formatMoney(value){return new Intl.NumberFormat("vi-VN").format(value)+" ₫";}
 function formatMoney(value){return new Intl.NumberFormat("vi-VN").format(value)+" ₫";}
 
-const state = { plans: null, selectedCode: "A", ai: null, requestId: 0 };
+const state = { plans: null, selectedCode: "A", activeDay: 1, ai: null, requestId: 0 };
 
 function mapPreference(interests){
   if(!interests.length) return "Tổng hòa văn hóa và thiên nhiên";
@@ -153,9 +153,12 @@ function renderPlans(){
     </div>`;
   }).join("");
 
+  const availableDays = selected.timeline.map(day=>Number(day.day));
+  if(!availableDays.includes(state.activeDay)) state.activeDay = availableDays[0] || 1;
+  const dayTabs = selected.timeline.map(day=>`<button class="day-tab${Number(day.day)===state.activeDay?" active":""}" type="button" role="tab" aria-selected="${Number(day.day)===state.activeDay}" data-day="${day.day}" onclick="selectPlanDay(${Number(day.day)})">Ngày ${day.day}</button>`).join("");
   const daysHtml = selected.timeline.map(day=>{
     const items = day.schedule.map(item=>`<div class="result-day"><div class="result-day-top"><b>${escapeHtml(item.slot)}</b><span>${escapeHtml(item.type==="visit"?"THAM QUAN":"BỮA ĂN / NGHỈ")}</span></div><h4>${escapeHtml(item.title)}</h4><p>${escapeHtml(item.desc||"")}</p>${item.ticket!==undefined?`<p>${item.ticket===0?"Miễn phí":`Vé ${formatMoney(item.ticket)}/người`}</p>`:""}</div>`).join("");
-    return `<div class="result-day-block"><div class="result-day-top"><b>Ngày ${day.day}</b><span>${escapeHtml(day.theme||"")}</span></div>${items}</div>`;
+    return `<section class="result-day-panel" role="tabpanel" data-day-panel="${day.day}"${Number(day.day)===state.activeDay?"":" hidden"}><div class="day-theme"><b>Ngày ${day.day}</b><span>${escapeHtml(day.theme||"")}</span></div>${items}</section>`;
   }).join("");
 
   const swapRow = selected.destinations.map(id=>{
@@ -167,6 +170,7 @@ function renderPlans(){
 
   result.innerHTML = `<div class="result-summary"><span>Ưu tiên: ${escapeHtml(state.plans.user_input?.preference||"")}</span><span>Ngân sách nhóm: ${formatMoney(selected.budget_check.user_budget)}</span></div>
   <div class="result-options">${optionCards}</div>
+  <div class="day-tabs" role="tablist" aria-label="Chọn ngày trong hành trình">${dayTabs}</div>
   <div class="result-days">${daysHtml}</div>
   <div class="cost-panel"><div class="cost-panel-top"><b>Tổng dự kiến cho cả nhóm*</b><strong>${formatMoney(b.total)}</strong></div><small>*Đã gồm vé, ăn, ở, di chuyển và dự phòng 8%. Chưa gồm chi phí đến/rời vùng và mua sắm.</small></div>
   <div class="cost-warning">${escapeHtml(check.status_text)}. ${check.status==="exceeded"?"Chọn ngân sách cao hơn hoặc đổi điểm để giảm chi phí.":"Các khoản được tính theo dữ liệu tham khảo, cần xác nhận với đơn vị cung cấp."}</div>
@@ -176,10 +180,15 @@ function renderPlans(){
 
   document.querySelector("#result-empty").hidden = true;
   result.hidden = false;
-  result.querySelectorAll(".result-option").forEach(el=>el.addEventListener("click",()=>{state.selectedCode=el.dataset.code;renderPlans();}));
+  result.querySelectorAll(".result-option").forEach(el=>el.addEventListener("click",()=>{state.selectedCode=el.dataset.code;state.activeDay=1;renderPlans();}));
   result.querySelectorAll("[data-swap]").forEach(el=>el.addEventListener("click",()=>swapDestination(el.dataset.swap)));
   result.querySelector("#print-plan").addEventListener("click",()=>window.print());
   result.querySelector("#change-plan").addEventListener("click",()=>document.querySelector("#planner-form").scrollIntoView({behavior:"smooth",block:"center"}));
+}
+
+function selectPlanDay(day){
+  state.activeDay = Number(day);
+  renderPlans();
 }
 
 async function makePlan(event){
@@ -195,6 +204,7 @@ async function makePlan(event){
     if(!res.ok || !data.ok) throw new Error(data.error || "Không lập được hành trình.");
     state.plans = data;
     state.selectedCode = data.default_option || "A";
+    state.activeDay = 1;
     renderPlans();
   }catch(e){
     if(reqId === state.requestId){
@@ -207,14 +217,21 @@ async function swapDestination(oldId){
   if(!state.plans) return;
   const opt = state.plans.options.find(o=>o.code===state.selectedCode);
   if(!opt) return;
-  const candidates = [...new Set(state.plans.options.flatMap(o=>o.destinations))].filter(id=>id!==oldId);
-  const nameOf = id => { const d = opt.destination_details.find(x=>x.id===id); return d?d.name:id; };
-  const choice = window.prompt("Đổi điểm " + nameOf(oldId) + " thành:\n\n" + candidates.map((id,i)=>`${i+1}. ${nameOf(id)}`).join("\n") + "\n\nNhập số (0 để hủy):", "1");
-  if(choice === null || choice === "") return;
-  const idx = Number.parseInt(choice, 10);
-  if(!Number.isFinite(idx) || idx === 0) return;
-  const newId = candidates[idx-1];
-  if(!newId) return;
+  const allDetails = state.plans.options.flatMap(o=>o.destination_details||[]);
+  const nameOf = id => allDetails.find(x=>x.id===id)?.name || id;
+  const candidates = [...new Set(state.plans.options.flatMap(o=>o.destinations))]
+    .filter(id=>id!==oldId && !opt.destinations.includes(id));
+  const newId = candidates[0];
+  if(!newId){
+    window.alert("Chưa có điểm thay thế phù hợp trong danh mục hiện tại.");
+    return;
+  }
+  const button = document.querySelector(`[data-swap="${oldId}"]`);
+  const originalLabel = button?.textContent;
+  if(button){
+    button.disabled = true;
+    button.textContent = "Đang đổi điểm…";
+  }
   try{
     const res = await fetch("/api/doi-diem", { method:"POST", headers:{"Content-Type":"application/json"}, body:JSON.stringify({ pax:opt.budget.pax, days:opt.budget.days, destinations:opt.destinations, old_id:oldId, new_id:newId, acc_type:opt.accommodation_type||"hotel" }) });
     const data = await res.json().catch(()=>({}));
@@ -234,6 +251,10 @@ async function swapDestination(oldId){
     renderPlans();
   }catch(e){
     window.alert(e.message || e);
+    if(button){
+      button.disabled = false;
+      button.textContent = originalLabel;
+    }
   }
 }
 
