@@ -103,7 +103,7 @@ function renderPlaces(filter=placeFilter){
  destinationPagination.innerHTML=pageCount>1?`<button type="button" data-page="prev" ${placePage===1?"disabled":""}>← Trang trước</button><span>Trang ${placePage} / ${pageCount}</span><button type="button" data-page="next" ${placePage===pageCount?"disabled":""}>Trang sau →</button>`:"";
 }
 function renderFoods(){
- foodGrid.innerHTML=foods.map(food=>`<article class="food-card"><img class="food-image" src="${escapeHtml(food.image)}" alt="${escapeHtml(food.alt)}" loading="lazy" width="1000" height="750"/><div class="food-body"><h3>${escapeHtml(food.name)}</h3><p>${escapeHtml(food.desc)}</p><small>${escapeHtml(food.note)}</small><a class="food-source" href="${escapeHtml(food.source)}" target="_blank" rel="noopener noreferrer" aria-label="Đọc bài VnExpress về ${escapeHtml(food.name)}">Đọc bài trên VnExpress </a><span class="food-credit">Ảnh: ${escapeHtml(food.credit)}</span></div></article>`).join("");
+ foodGrid.innerHTML=foods.map(food=>`<article class="food-card"><img class="food-image" src="${escapeHtml(food.image)}" alt="${escapeHtml(food.alt)}" loading="lazy" width="1000" height="750"/><div class="food-body"><h3>${escapeHtml(food.name)}</h3><p>${escapeHtml(food.desc)}</p><small>${escapeHtml(food.note)}</small><a class="food-source" href="${escapeHtml(food.source)}" target="_blank" rel="noopener noreferrer" aria-label="Đọc bài VnExpress về ${escapeHtml(food.name)}">Đọc bài </a></div></article>`).join("");
 }
 renderPlaces();renderFoods();
 document.querySelectorAll(".filter-chip").forEach(button=>button.addEventListener("click",()=>{document.querySelectorAll(".filter-chip").forEach(item=>item.classList.toggle("active",item===button));placePage=1;renderPlaces(button.dataset.filter);}));
