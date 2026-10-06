@@ -4,10 +4,11 @@ Phục vụ app/ tĩnh và hai API:
 - GET  /api/meta          -> danh mục vùng, nhãn sở thích, nguồn dữ liệu
 - POST /api/lap-lich      -> sinh tối đa 3 phương án theo quy tắc (không tốn AI)
 - POST /api/tu-van        -> gọi AI qua gateway chọn 1 phương án và giải thích
+- POST /api/chat          -> hỏi đáp qua API riêng phía máy chủ
 - GET  /api/health        -> kiểm tra tiến trình
 
-Mọi lời gọi AI đều đi qua tools/mediakit.py bằng subprocess; backend không
-nhận key từ trình duyệt và không ghi key vào mã nguồn.
+AI chọn lịch gọi qua tools/mediakit.py; hỏi đáp dùng API riêng trong chat_handler.
+Backend không nhận key từ trình duyệt và không ghi key vào mã nguồn.
 """
 
 import json

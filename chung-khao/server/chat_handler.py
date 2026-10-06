@@ -1,17 +1,10 @@
-"""Endpoint hội thoại cho website, gọi gateway BTC qua tools/mediakit.py chat.
+"""Hỏi đáp qua API tương thích OpenAI, khóa chỉ nằm ở phía máy chủ."""
 
-Chỉ nhận POST /api/chat với danh sách messages xen kẽ user/assistant, kết thúc
-bằng vai user. Key do mediakit tự nạp từ môi trường; backend không nhận key
-từ trình duyệt và không ghi key vào mã nguồn.
-"""
-
-import json
 import os
-import pathlib
-import subprocess
+import requests
 
-BASE_DIR = pathlib.Path(__file__).resolve().parent.parent
-REPO_DIR = BASE_DIR.parent
+CHAT_API_BASE_URL = "http://117.1.150.235:31000/v1"
+CHAT_MODEL = "deepseek-v4.1-flash"
 
 SYSTEM_MESSAGE = (
     "Bạn là trợ lý Đắk Lắk Ơi, trả lời bằng tiếng Việt có dấu, ngắn gọn, "
@@ -26,43 +19,38 @@ SYSTEM_MESSAGE = (
 
 
 def run_chat(messages, model=None):
-    model = model or os.environ.get("THUCCHIEN_CHAT_MODEL", "gemini-3.1-flash-lite")
-    python_bin = str(BASE_DIR / ".venv" / "bin" / "python")
-    if not os.path.exists(python_bin):
-        python_bin = str(REPO_DIR / ".venv" / "bin" / "python")
-    if not os.path.exists(python_bin):
-        python_bin = "python3"
+    key = os.environ.get("CHAT_API_KEY", "").strip()
+    if not key:
+        raise RuntimeError("Trợ lý chưa được cấu hình khóa API trên máy chủ.")
+    base_url = os.environ.get("CHAT_API_BASE_URL", CHAT_API_BASE_URL).rstrip("/")
+    try:
+        response = requests.post(
+            base_url + "/chat/completions",
+            headers={"Authorization": "Bearer " + key},
+            json={
+                "model": model or os.environ.get("CHAT_MODEL", CHAT_MODEL),
+                "messages": [{"role": "system", "content": SYSTEM_MESSAGE}] + messages,
+                "max_tokens": 1200,
+                "stream": False,
+            },
+            timeout=(5, 35),
+            allow_redirects=False,
+        )
+    except requests.Timeout:
+        raise RuntimeError("Trợ lý phản hồi quá lâu. Vui lòng gửi lại câu hỏi.") from None
+    except requests.RequestException:
+        raise RuntimeError("Chưa kết nối được máy chủ hỏi đáp. Vui lòng thử lại.") from None
 
-    payload = [{"role": "system", "content": SYSTEM_MESSAGE}] + messages
-    cmd = [
-        python_bin,
-        str(BASE_DIR / "tools" / "mediakit.py"),
-        "chat",
-        "--model", model,
-        "--max-tokens", "600",
-    ]
-    env = os.environ.copy()
-    proc = subprocess.run(
-        cmd,
-        input=json.dumps(payload, ensure_ascii=False),
-        stdout=subprocess.PIPE,
-        stderr=subprocess.PIPE,
-        text=True,
-        timeout=40,
-        cwd=str(BASE_DIR),
-        env=env,
-    )
-    if proc.returncode != 0:
-        raise RuntimeError(_gateway_error(proc.stderr))
-    text = proc.stdout.strip()
-    if not text:
-        raise RuntimeError("Trợ lý chưa có câu trả lời.")
-    return text
-
-
-def _gateway_error(stderr):
-    if "Budget" in stderr or "HẾT NGÂN SÁCH" in stderr:
-        return "Ngân sách AI đã hết. Trợ lý tạm dừng nhận câu hỏi."
-    if "401" in stderr:
-        return "Trợ lý chưa được cấu hình khóa API hợp lệ trên máy chủ."
-    return "Gateway đang bận hoặc cấu hình chưa hợp lệ."
+    if response.status_code in (401, 403):
+        raise RuntimeError("Máy chủ hỏi đáp từ chối xác thực. Vui lòng kiểm tra cấu hình khóa API.")
+    if response.status_code == 429:
+        raise RuntimeError("Máy chủ hỏi đáp đang giới hạn yêu cầu hoặc hết hạn mức. Vui lòng thử lại sau.")
+    if response.status_code != 200:
+        raise RuntimeError("Máy chủ hỏi đáp tạm thời không thể xử lý yêu cầu.")
+    try:
+        reply = response.json()["choices"][0]["message"]["content"]
+    except (ValueError, KeyError, IndexError, TypeError):
+        raise RuntimeError("Máy chủ hỏi đáp trả về dữ liệu không hợp lệ.") from None
+    if not isinstance(reply, str) or not reply.strip():
+        raise RuntimeError("Trợ lý chưa có câu trả lời. Vui lòng thử lại.")
+    return reply.strip()
