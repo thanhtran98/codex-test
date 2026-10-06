@@ -17,3 +17,12 @@ out
 node_modules
 **/__pycache__
 chung-khao/server/tests
+
+**/.env
+**/.env.*
+**/.ai-log
+**/.thucchien
+**/.venv
+**/venv
+**/node_modules
+**/.git

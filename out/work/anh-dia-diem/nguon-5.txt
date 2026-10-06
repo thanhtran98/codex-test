@@ -1,0 +1,12 @@
+https://baotangthegioicaphe.com/chinh-thuc-khai-truong-bao-tang-the-gioi-ca-phe-diem-den-moi-cua-viet-nam
+200
+('./img/product/1.png', '', '')
+('./img/product/1.png', '', '')
+('/Data/Sites/1/News/2893/0707.png', 'NGẮM TRỌN BẢO TÀNG THẾ GIỚI CÀ PHÊ TRÊN NHỮNG TẦNG MÂY', '')
+('/Data/Sites/1/News/2735/11a.jpg', 'Bảo tàng Thế giới Cà phê', '')
+('/Data/Sites/1/News/2733/123.jpg', '[Giao lưu văn hóa Việt Nam - Indonesia] Batik & Thổ cẩm Ê đê', '')
+('/Data/Sites/1/News/2730/9.jpg', '[Triển lãm nghệ thuật gấp giấy Origami] - Suối Nguồn', '')
+('/Data/Sites/1/News/2731/2222.jpg', '[Lễ hội Cà phê 2019] - Khai trương Triển lãm Lịch sử Cà phê Thế giới', '')
+('/Data/Sites/1/News/2554/image-7.png', 'Trung nguyen Investment Corp', '')
+('/Data/Sites/1/News/2555/image-8.png', 'Trung Nguyen Legend', '')
+('/Data/Sites/1/News/2556/image-9.png', 'Coffee City', '')
