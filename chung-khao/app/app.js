@@ -158,7 +158,15 @@ function renderPlans(){
   if(!availableDays.includes(state.activeDay)) state.activeDay = availableDays[0] || 1;
   const dayTabs = selected.timeline.map(day=>`<button class="day-tab${Number(day.day)===state.activeDay?" active":""}" type="button" role="tab" aria-selected="${Number(day.day)===state.activeDay}" data-day="${day.day}" onclick="selectPlanDay(${Number(day.day)})">Ngày ${day.day}</button>`).join("");
   const daysHtml = selected.timeline.map(day=>{
-    const items = day.schedule.map(item=>`<div class="result-day"><div class="result-day-top"><b>${escapeHtml(item.slot)}</b><span>${escapeHtml(item.type==="visit"?"THAM QUAN":"BỮA ĂN / NGHỈ")}</span></div><h4>${escapeHtml(item.title)}</h4><p>${escapeHtml(item.desc||"")}</p>${item.ticket!==undefined?`<p>${item.ticket===0?"Miễn phí":`Vé ${formatMoney(item.ticket)}/người`}</p>`:""}</div>`).join("");
+    const mealsForDay = (b.meals?.items||[]).filter(meal=>Number(meal.day)===Number(day.day));
+    let mealIndex = 0;
+    const items = day.schedule.map(item=>{
+      const meal = item.type==="meal" ? mealsForDay[mealIndex++] : null;
+      const estimatedCost = item.type==="meal" ? Number(meal?.cost||0) : Number(item.ticket||0) * Number(selected.budget.pax||1);
+      const estimateNote = `<span class="item-estimate">Ước tính cho nhóm: <b>${formatMoney(estimatedCost)}</b></span>`;
+      const mapLink = item.type==="visit" ? `<a class="map-link" href="https://www.google.com/maps/search/?api=1&amp;query=${encodeURIComponent(`${item.title}, ${item.address||"Đắk Lắk"}, Việt Nam`)}" target="_blank" rel="noopener noreferrer" aria-label="Mở ${escapeHtml(item.title)} trên Google Maps">Mở Google Maps <span aria-hidden="true">↗</span></a>` : "";
+      return `<div class="result-day"><div class="result-day-top"><b>${escapeHtml(item.slot)}</b><span>${escapeHtml(item.type==="visit"?"THAM QUAN":"BỮA ĂN / NGHỈ")}</span></div><h4>${escapeHtml(item.title)}</h4><p>${escapeHtml(item.desc||"")}</p><div class="result-day-meta">${estimateNote}${mapLink}</div></div>`;
+    }).join("");
     return `<section class="result-day-panel" role="tabpanel" data-day-panel="${day.day}"${Number(day.day)===state.activeDay?"":" hidden"}><div class="day-theme"><b>Ngày ${day.day}</b><span>${escapeHtml(day.theme||"")}</span></div>${items}</section>`;
   }).join("");
 
@@ -176,6 +184,7 @@ function renderPlans(){
   result.innerHTML = `<div class="result-summary"><span>Ưu tiên: ${escapeHtml(state.plans.user_input?.preference||"")}</span><span>Ngân sách nhóm: ${formatMoney(selected.budget_check.user_budget)}</span></div>
   <div class="day-tabs" role="tablist" aria-label="Chọn ngày trong hành trình">${dayTabs}</div>
   <div class="result-days">${daysHtml}</div>
+  <p class="estimate-disclaimer">*Chi phí từng mục là ước tính cho cả nhóm; chưa phân bổ chi phí lưu trú, di chuyển và khoản dự phòng.</p>
   <div class="cost-panel"><div class="cost-panel-top"><b>Tổng dự kiến cho cả nhóm*</b><strong>${formatMoney(b.total)}</strong></div><small>*Đã gồm vé, ăn, ở, di chuyển và dự phòng 8%. Chưa gồm chi phí đến/rời vùng và mua sắm.</small></div>
   <div class="cost-warning">${escapeHtml(check.status_text)}. ${check.status==="exceeded"?"Chọn ngân sách cao hơn hoặc đổi điểm để giảm chi phí.":"Các khoản được tính theo dữ liệu tham khảo, cần xác nhận với đơn vị cung cấp."}</div>
   <div class="result-swap-row">${swapRow}</div>
