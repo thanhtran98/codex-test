@@ -132,7 +132,7 @@ function setLoading(msg){
   const result = document.querySelector("#result-content");
   result.hidden = false;
   document.querySelector("#result-empty").hidden = true;
-  result.innerHTML = `<div class="result-empty"><span class="result-sparkle">✳</span><p class="eyebrow">ĐANG LẬP HÀNH TRÌNH</p><h3>${escapeHtml(msg)}</h3></div>`;
+  result.innerHTML = `<div class="result-empty"><p class="eyebrow">ĐANG LẬP HÀNH TRÌNH</p><h3>${escapeHtml(msg)}</h3></div>`;
 }
 
 function renderPlans(){
@@ -165,8 +165,7 @@ function renderPlans(){
 
   const aiHtml = state.ai ? `<div class="ai-note"><b>${state.ai.is_fallback?"Gợi ý theo quy tắc":"Gợi ý từ AI qua gateway BTC"}</b><p>${escapeHtml(state.ai.reasoning||"")}</p><p>Mẹo: ${escapeHtml(state.ai.practical_tip||"—")} · Ứng xử: ${escapeHtml(state.ai.responsible_reminder||"—")}</p></div>` : "";
 
-  result.innerHTML = `<div class="result-head"><div><p class="eyebrow">BẢN NHÁP HÀNH TRÌNH</p><h3>${selected.days} ngày · ${selected.pax} người</h3></div><span class="result-badge">XẾP HẠNG THEO QUY TẮC</span></div>
-  <div class="result-summary"><span>Ưu tiên: ${escapeHtml(state.plans.user_input?.preference||"")}</span><span>Ngân sách nhóm: ${formatMoney(selected.budget_check.user_budget)}</span></div>
+  result.innerHTML = `<div class="result-summary"><span>Ưu tiên: ${escapeHtml(state.plans.user_input?.preference||"")}</span><span>Ngân sách nhóm: ${formatMoney(selected.budget_check.user_budget)}</span></div>
   <div class="result-options">${optionCards}</div>
   <div class="result-days">${daysHtml}</div>
   <div class="cost-panel"><div class="cost-panel-top"><b>Tổng dự kiến cho cả nhóm*</b><strong>${formatMoney(b.total)}</strong></div><small>*Đã gồm vé, ăn, ở, di chuyển và dự phòng 8%. Chưa gồm chi phí đến/rời vùng và mua sắm.</small></div>
