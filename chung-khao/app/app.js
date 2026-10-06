@@ -130,6 +130,7 @@ function collectInputs(){
 
 function setLoading(msg){
   const result = document.querySelector("#result-content");
+  document.querySelector("#plan-options-panel").hidden = true;
   result.hidden = false;
   document.querySelector("#result-empty").hidden = true;
   result.innerHTML = `<div class="result-empty"><p class="eyebrow">ĐANG LẬP HÀNH TRÌNH</p><h3>${escapeHtml(msg)}</h3></div>`;
@@ -145,12 +146,12 @@ function renderPlans(){
   const optionCards = opts.map(o=>{
     const ob = o.budget.breakdown;
     const oc = o.budget_check;
-    return `<div class="result-option ${o.code===state.selectedCode?"selected":""}" data-code="${o.code}">
-      <div class="result-option-top"><b>${o.code} · ${escapeHtml(o.name)}</b><span>${escapeHtml(o.badge||"")}</span></div>
-      <div class="result-option-total">${formatMoney(ob.total)}</div>
-      <div class="result-option-sub">${o.budget.pax} người · ${o.budget.days} ngày · bình quân ${formatMoney(ob.per_pax)}/người</div>
-      <div class="result-option-badge ${oc.status==="fit"?"budget-fit":"budget-exceeded"}">${escapeHtml(oc.status_text)}</div>
-    </div>`;
+    return `<button class="result-option ${o.code===state.selectedCode?"selected":""}" type="button" data-code="${o.code}">
+      <span class="result-option-top"><b>${o.code} · ${escapeHtml(o.name)}</b><span>${escapeHtml(o.badge||"")}</span></span>
+      <span class="result-option-total">${formatMoney(ob.total)}</span>
+      <span class="result-option-sub">${o.budget.pax} người · ${o.budget.days} ngày · bình quân ${formatMoney(ob.per_pax)}/người</span>
+      <span class="result-option-badge ${oc.status==="fit"?"budget-fit":"budget-exceeded"}">${escapeHtml(oc.status_text)}</span>
+    </button>`;
   }).join("");
 
   const availableDays = selected.timeline.map(day=>Number(day.day));
@@ -168,19 +169,23 @@ function renderPlans(){
 
   const aiHtml = state.ai ? `<div class="ai-note"><b>${state.ai.is_fallback?"Gợi ý theo quy tắc":"Gợi ý từ AI qua gateway BTC"}</b><p>${escapeHtml(state.ai.reasoning||"")}</p><p>Mẹo: ${escapeHtml(state.ai.practical_tip||"—")} · Ứng xử: ${escapeHtml(state.ai.responsible_reminder||"—")}</p></div>` : "";
 
+  const optionsPanel = document.querySelector("#plan-options-panel");
+  optionsPanel.innerHTML = `<p class="options-label">Chọn phương án hành trình</p><div class="result-options">${optionCards}</div>`;
+  optionsPanel.hidden = false;
+
   result.innerHTML = `<div class="result-summary"><span>Ưu tiên: ${escapeHtml(state.plans.user_input?.preference||"")}</span><span>Ngân sách nhóm: ${formatMoney(selected.budget_check.user_budget)}</span></div>
-  <div class="result-options">${optionCards}</div>
   <div class="day-tabs" role="tablist" aria-label="Chọn ngày trong hành trình">${dayTabs}</div>
   <div class="result-days">${daysHtml}</div>
   <div class="cost-panel"><div class="cost-panel-top"><b>Tổng dự kiến cho cả nhóm*</b><strong>${formatMoney(b.total)}</strong></div><small>*Đã gồm vé, ăn, ở, di chuyển và dự phòng 8%. Chưa gồm chi phí đến/rời vùng và mua sắm.</small></div>
   <div class="cost-warning">${escapeHtml(check.status_text)}. ${check.status==="exceeded"?"Chọn ngân sách cao hơn hoặc đổi điểm để giảm chi phí.":"Các khoản được tính theo dữ liệu tham khảo, cần xác nhận với đơn vị cung cấp."}</div>
   <div class="result-swap-row">${swapRow}</div>
   ${aiHtml}
-  <div class="result-actions"><button type="button" id="print-plan">In / lưu PDF</button><button type="button" id="change-plan">Đổi sở thích</button></div>`;
+  <div class="result-actions"><button type="button" id="print-plan">In / lưu PDF</button><button type="button" id="change-plan">Đổi sở thích</button></div>
+  <a class="flight-booking result-flight-booking" href="https://www.vietjetair.com/vi/ve-may-bay" target="_blank" rel="noopener noreferrer" aria-label="Đặt vé máy bay trên website chính thức của Vietjet Air">Đặt vé máy bay <span aria-hidden="true">↗</span></a>`;
 
   document.querySelector("#result-empty").hidden = true;
   result.hidden = false;
-  result.querySelectorAll(".result-option").forEach(el=>el.addEventListener("click",()=>{state.selectedCode=el.dataset.code;state.activeDay=1;renderPlans();}));
+  optionsPanel.querySelectorAll(".result-option").forEach(el=>el.addEventListener("click",()=>{state.selectedCode=el.dataset.code;state.activeDay=1;renderPlans();}));
   result.querySelectorAll("[data-swap]").forEach(el=>el.addEventListener("click",()=>swapDestination(el.dataset.swap)));
   result.querySelector("#print-plan").addEventListener("click",()=>window.print());
   result.querySelector("#change-plan").addEventListener("click",()=>document.querySelector("#planner-form").scrollIntoView({behavior:"smooth",block:"center"}));
