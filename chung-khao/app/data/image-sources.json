@@ -116,10 +116,5 @@
       "license": "Chưa xác minh giấy phép tái sử dụng; ghi nhận nguồn công khai."
     }
   ],
-  "pending": [
-    {
-      "id": "buon-trap",
-      "reason": "Chưa tìm được ảnh xác minh đúng thủy điện Buôn Trấp. Ảnh gần mục này trên VnExpress mang tên hồ Ea Kao, không sử dụng để tránh nhầm địa điểm."
-    }
-  ]
+  "pending": []
 }
