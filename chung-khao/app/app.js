@@ -65,6 +65,7 @@ const foods=[
 const grid=document.querySelector("#destination-grid");
 const foodGrid=document.querySelector("#food-grid");
 const filterResult=document.querySelector("#filter-result");
+const destinationPagination=document.querySelector("#destination-pagination");
 const heroSlides = [...document.querySelectorAll(".hero-slide")];
 const heroCounter = document.querySelector("#hero-counter");
 const heroLocation = document.querySelector("#hero-location");
@@ -86,16 +87,28 @@ function updateHeroSlide(nextIndex = 0){
 setInterval(() => updateHeroSlide(heroIndex + 1), 5000);
 
 function escapeHtml(value){return String(value).replace(/[&<>"']/g,char=>({"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;","'":"&#39;"}[char]));}
-function renderPlaces(filter="all"){
+let placeFilter="all";
+let placePage=1;
+function getPlacePageSize(){return window.innerWidth<=600?3:(window.innerWidth<=1000?6:12);}
+function renderPlaces(filter=placeFilter){
+ placeFilter=filter;
  const chosen=places.filter(place=>filter==="all"||place.filter===filter||(filter==="near"&&place.near));
- grid.innerHTML=chosen.map((place,index)=>`<article class="destination-card"><div class="destination-image${place.image?"":" is-placeholder"}">${place.image?`<img src="${place.image}" alt="${escapeHtml(place.alt)}" loading="lazy"/>`:`<div class="image-placeholder" aria-label="Chưa có ảnh đã xác minh đúng địa điểm"><span>CHƯA CÓ ẢNH<br/>ĐÃ XÁC MINH</span><i aria-hidden="true">✳</i></div>`}<span class="image-index">ĐIỂM ${String(index+1).padStart(2,"0")}</span></div><div class="card-body">${place.imageSource?`<a class="photo-credit" href="${escapeHtml(place.imageSource)}" target="_blank" rel="noopener noreferrer" aria-label="Nguồn ảnh ${escapeHtml(place.name)}">Ảnh: ${escapeHtml(place.imageCredit)} ↗</a>`:""}<div class="card-meta"><span>${escapeHtml(place.category)}</span></div><h3>${escapeHtml(place.name)}</h3><a class="place-source" href="${escapeHtml(place.source)}" target="_blank" rel="noopener noreferrer" aria-label="Đọc nguồn giới thiệu ${escapeHtml(place.name)}">Đọc giới thiệu · ${escapeHtml(place.sourceLabel)} ↗</a><div class="card-foot"><span class="card-cost">${escapeHtml(place.feeLabel)}<small>${escapeHtml(place.distance)}</small></span></div></div></article>`).join("");
- filterResult.textContent=filter==="all"?`${chosen.length} điểm từ bộ dữ liệu`:`${chosen.length} điểm phù hợp bộ lọc`;
+ const pageSize=getPlacePageSize();
+ const pageCount=Math.max(1,Math.ceil(chosen.length/pageSize));
+ placePage=Math.min(placePage,pageCount);
+ const start=(placePage-1)*pageSize;
+ const visible=chosen.slice(start,start+pageSize);
+ grid.innerHTML=visible.map((place,index)=>`<article class="destination-card"><div class="destination-image${place.image?"":" is-placeholder"}">${place.image?`<img src="${place.image}" alt="${escapeHtml(place.alt)}" loading="lazy"/>`:`<div class="image-placeholder" aria-label="Chưa có ảnh đã xác minh đúng địa điểm"><span>CHƯA CÓ ẢNH<br/>ĐÃ XÁC MINH</span><i aria-hidden="true">✳</i></div>`}<span class="image-index">ĐIỂM ${String(start+index+1).padStart(2,"0")}</span></div><div class="card-body">${place.imageSource?`<a class="photo-credit" href="${escapeHtml(place.imageSource)}" target="_blank" rel="noopener noreferrer" aria-label="Nguồn ảnh ${escapeHtml(place.name)}">Ảnh: ${escapeHtml(place.imageCredit)} </a>`:""}<div class="card-meta"><span>${escapeHtml(place.category)}</span></div><h3>${escapeHtml(place.name)}</h3><a class="place-source" href="${escapeHtml(place.source)}" target="_blank" rel="noopener noreferrer" aria-label="Đọc nguồn giới thiệu ${escapeHtml(place.name)}">Đọc giới thiệu · ${escapeHtml(place.sourceLabel)} </a><div class="card-foot"><span class="card-cost">${escapeHtml(place.feeLabel)}<small>${escapeHtml(place.distance)}</small></span></div></div></article>`).join("");
+ filterResult.textContent=`${chosen.length} điểm · Trang ${placePage}/${pageCount}`;
+ destinationPagination.innerHTML=pageCount>1?`<button type="button" data-page="prev" ${placePage===1?"disabled":""}>← Trang trước</button><span>Trang ${placePage} / ${pageCount}</span><button type="button" data-page="next" ${placePage===pageCount?"disabled":""}>Trang sau →</button>`:"";
 }
 function renderFoods(){
- foodGrid.innerHTML=foods.map(food=>`<article class="food-card"><img class="food-image" src="${escapeHtml(food.image)}" alt="${escapeHtml(food.alt)}" loading="lazy" width="1000" height="750"/><div class="food-body"><h3>${escapeHtml(food.name)}</h3><p>${escapeHtml(food.desc)}</p><small>${escapeHtml(food.note)}</small><a class="food-source" href="${escapeHtml(food.source)}" target="_blank" rel="noopener noreferrer" aria-label="Đọc bài VnExpress về ${escapeHtml(food.name)}">Đọc bài trên VnExpress ↗</a><span class="food-credit">Ảnh: ${escapeHtml(food.credit)}</span></div></article>`).join("");
+ foodGrid.innerHTML=foods.map(food=>`<article class="food-card"><img class="food-image" src="${escapeHtml(food.image)}" alt="${escapeHtml(food.alt)}" loading="lazy" width="1000" height="750"/><div class="food-body"><h3>${escapeHtml(food.name)}</h3><p>${escapeHtml(food.desc)}</p><small>${escapeHtml(food.note)}</small><a class="food-source" href="${escapeHtml(food.source)}" target="_blank" rel="noopener noreferrer" aria-label="Đọc bài VnExpress về ${escapeHtml(food.name)}">Đọc bài trên VnExpress </a><span class="food-credit">Ảnh: ${escapeHtml(food.credit)}</span></div></article>`).join("");
 }
 renderPlaces();renderFoods();
-document.querySelectorAll(".filter-chip").forEach(button=>button.addEventListener("click",()=>{document.querySelectorAll(".filter-chip").forEach(item=>item.classList.toggle("active",item===button));renderPlaces(button.dataset.filter);}));
+document.querySelectorAll(".filter-chip").forEach(button=>button.addEventListener("click",()=>{document.querySelectorAll(".filter-chip").forEach(item=>item.classList.toggle("active",item===button));placePage=1;renderPlaces(button.dataset.filter);}));
+destinationPagination.addEventListener("click",event=>{const button=event.target.closest("button[data-page]");if(!button||button.disabled)return;placePage+=button.dataset.page==="next"?1:-1;renderPlaces();document.querySelector("#diem-den").scrollIntoView({behavior:"smooth",block:"start"});});
+window.addEventListener("resize",()=>renderPlaces());
 document.querySelector(".menu-toggle").addEventListener("click",event=>{const nav=document.querySelector(".main-nav");const isOpen=nav.classList.toggle("open");event.currentTarget.setAttribute("aria-expanded",String(isOpen));});
 document.querySelectorAll(".main-nav a").forEach(link=>link.addEventListener("click",()=>{document.querySelector(".main-nav").classList.remove("open");document.querySelector(".menu-toggle").setAttribute("aria-expanded","false");}));
 
@@ -167,7 +180,7 @@ function renderPlans(){
       const meal = item.type==="meal" ? mealsForDay[mealIndex++] : null;
       const estimatedCost = item.type==="meal" ? Number(meal?.cost||0) : Number(item.ticket||0) * Number(selected.budget.pax||1);
       const estimateNote = `<span class="item-estimate">Ước tính cho nhóm: <b>${formatMoney(estimatedCost)}</b></span>`;
-      const mapLink = item.type==="visit" ? `<a class="map-link" href="https://www.google.com/maps/search/?api=1&amp;query=${encodeURIComponent(`${item.title}, ${item.address||"Đắk Lắk"}, Việt Nam`)}" target="_blank" rel="noopener noreferrer" aria-label="Mở ${escapeHtml(item.title)} trên Google Maps">Mở Google Maps <span aria-hidden="true">↗</span></a>` : "";
+      const mapLink = item.type==="visit" ? `<a class="map-link" href="https://www.google.com/maps/search/?api=1&amp;query=${encodeURIComponent(`${item.title}, ${item.address||"Đắk Lắk"}, Việt Nam`)}" target="_blank" rel="noopener noreferrer" aria-label="Mở ${escapeHtml(item.title)} trên Google Maps">Mở Google Maps <span aria-hidden="true"></span></a>` : "";
       return `<div class="result-day"><div class="result-day-top"><b>${escapeHtml(item.slot)}</b><span>${escapeHtml(item.type==="visit"?"THAM QUAN":"BỮA ĂN / NGHỈ")}</span></div><h4>${escapeHtml(item.title)}</h4><p>${escapeHtml(item.desc||"")}</p><div class="result-day-meta">${estimateNote}${mapLink}</div></div>`;
     }).join("");
     return `<section class="result-day-panel" role="tabpanel" data-day-panel="${day.day}"${Number(day.day)===state.activeDay?"":" hidden"}><div class="day-theme"><b>Ngày ${day.day}</b><span>${escapeHtml(day.theme||"")}</span></div>${items}</section>`;
@@ -189,7 +202,7 @@ function renderPlans(){
   <div class="result-days">${daysHtml}</div>
   <div class="cost-panel">
     <div class="cost-line"><span>Vé tham quan và ăn uống</span><b>${formatMoney(Number(b.tickets?.total||0)+Number(b.meals?.total||0))}</b></div>
-    <div class="cost-line cost-hotel"><span>Khách sạn (${Number(selected.budget?.days||0)} ngày · ${Number(b.accommodation?.nights||0)} đêm theo lộ trình)</span><span><b>${accommodationBase?`${formatMoney(accommodationLow)} – ${formatMoney(accommodationHigh)}`:"Không phát sinh"}</b><a href="https://www.traveloka.com/" target="_blank" rel="noopener noreferrer" aria-label="Tìm khách sạn trên Traveloka">Xem khách sạn ↗</a></span></div>
+    <div class="cost-line cost-hotel"><span>Khách sạn (${Number(selected.budget?.days||0)} ngày · ${Number(b.accommodation?.nights||0)} đêm theo lộ trình)</span><span><b>${accommodationBase?`${formatMoney(accommodationLow)} – ${formatMoney(accommodationHigh)}`:"Không phát sinh"}</b><a href="https://www.traveloka.com/" target="_blank" rel="noopener noreferrer" aria-label="Tìm khách sạn trên Traveloka">Xem khách sạn </a></span></div>
     <div class="cost-line"><span>Di chuyển giữa các điểm</span><b>${formatMoney(b.transport?.cost||0)}</b></div>
     <div class="cost-line"><span>Dự phòng 8%</span><b>${formatMoney(b.contingency||0)}</b></div>
     <div class="cost-panel-top"><b>Tổng dự kiến cho cả nhóm*</b><strong>${formatMoney(b.total)}</strong></div>
@@ -199,7 +212,7 @@ function renderPlans(){
   <div class="result-swap-row">${swapRow}</div>
   ${aiHtml}
   <div class="result-actions"><button type="button" id="print-plan">In / lưu PDF</button><button type="button" id="change-plan">Đổi sở thích</button></div>
-  <a class="flight-booking result-flight-booking" href="https://www.vietjetair.com/vi/ve-may-bay" target="_blank" rel="noopener noreferrer" aria-label="Đặt vé máy bay trên website chính thức của Vietjet Air">Đặt vé máy bay <span aria-hidden="true">↗</span></a>`;
+  <a class="flight-booking result-flight-booking" href="https://www.vietjetair.com/vi/ve-may-bay" target="_blank" rel="noopener noreferrer" aria-label="Đặt vé máy bay trên website chính thức của Vietjet Air">Đặt vé máy bay <span aria-hidden="true"></span></a>`;
 
   document.querySelector("#result-empty").hidden = true;
   result.hidden = false;
