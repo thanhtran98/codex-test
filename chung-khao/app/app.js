@@ -18,10 +18,50 @@ const places=[
   {id:"prison",name:"Nhà đày Buôn Ma Thuột",category:"Văn hóa · di tích lịch sử",filter:"culture",tags:["culture","slow"],image:"./images/prison.jpg",alt:"Toàn cảnh di tích Nhà đày Buôn Ma Thuột",imageSource:"https://tienphong.vn/ben-trong-di-tich-quoc-gia-dac-biet-nha-day-buon-ma-thuot-post1553721.tpo",imageCredit:"Báo Tiền Phong",description:"Di tích lịch sử trong trung tâm Buôn Ma Thuột; kiểm tra lịch đón khách trước khi đi.",distance:"Trong khu vực trung tâm",fee:null,feeLabel:"Giá vé và giờ mở cửa cần xác minh",near:true,route:"city"}
 ];
 const foods=[
-  {icon:"◉",name:"Cơm lam, gà nướng",desc:"Món được bài gợi ý tại các buôn làng du lịch như Buôn Đôn, Buôn Jun.",note:"Giá tùy quán · chưa xác minh"},
-  {icon:"◌",name:"Bún đỏ",desc:"Món ăn bình dân được giới thiệu ở khu vực trung tâm Buôn Ma Thuột.",note:"Bài nguồn nêu quán tham khảo · nên kiểm tra trước"},
-  {icon:"⌁",name:"Bánh ướt thịt nướng",desc:"Bài cẩm nang gợi ý món ăn tại một địa chỉ ở Buôn Ma Thuột.",note:"Giá tùy quán · chưa xác minh"},
-  {icon:"✳",name:"Cá lăng, lẩu lá",desc:"Một vài hương vị địa phương được cẩm nang nhắc đến; hỏi quán về món theo mùa.",note:"Giá tùy quán · chưa xác minh"}
+  {
+    "id": "bun-do",
+    "name": "Bún đỏ",
+    "image": "./images/mon-bun-do.jpg",
+    "alt": "Bún đỏ được giới thiệu trên VnExpress",
+    "desc": "Sợi bún to nhuộm màu dầu điều, ăn cùng riêu cua, chả viên và trứng cút. Một món quen thuộc cho buổi chiều ở phố núi.",
+    "credit": "VnExpress · Tâm Linh",
+    "source": "https://vnexpress.net/nhung-mon-nen-thu-o-buon-ma-thuot-4247663.html",
+    "imageSource": "https://i1-dulich.vnecdn.net/2022/01/04/VnExpress-BMT-1-6562-161554021-8355-1622-1641272065.jpg?w=1020&h=0&q=100&dpr=1&fit=crop&s=xlPOAMVFoQiRuQSMhzO8gw",
+    "note": "Giá và nơi bán cần xác nhận trước khi ghé."
+  },
+  {
+    "id": "banh-uot",
+    "name": "Bánh ướt chồng đĩa",
+    "image": "./images/mon-banh-uot.jpg",
+    "alt": "Bánh ướt chồng đĩa được giới thiệu trên VnExpress",
+    "desc": "Từng đĩa bánh mỏng được dọn riêng để bạn tự cuốn thịt nướng, chả lụa, xoài và dưa chua; chấm mắm nêm hoặc nước mắm.",
+    "credit": "nganha86/Instagram · qua VnExpress",
+    "source": "https://vnexpress.net/nhung-mon-nen-thu-o-buon-ma-thuot-4247663.html",
+    "imageSource": "https://i1-dulich.vnecdn.net/2022/01/04/VnExpress-BMT-9-6742-161554021-6691-4702-1641272066.jpg?w=1020&h=0&q=100&dpr=1&fit=crop&s=NjW8giI3Rl4lw4IOzX_ldA",
+    "note": "Giá và nơi bán cần xác nhận trước khi ghé."
+  },
+  {
+    "id": "lau-ca-lang",
+    "name": "Lẩu cá lăng",
+    "image": "./images/mon-lau-ca-lang.jpg",
+    "alt": "Lẩu cá lăng được giới thiệu trên VnExpress",
+    "desc": "Cá lăng thịt chắc nấu trong nước lẩu chua cay, ăn cùng măng chua và rau rừng. Hợp cho một bữa quây quần bên nồi lẩu nóng.",
+    "credit": "Du Lịch Tây Nguyên · qua VnExpress",
+    "source": "https://vnexpress.net/mon-lau-ca-dam-chat-tay-nguyen-dai-ngan-4326393.html",
+    "imageSource": "https://i1-dulich.vnecdn.net/2022/01/07/calang1-3441-1626606695-4534-1641543074.jpg?w=1020&h=0&q=100&dpr=1&fit=crop&s=Ea6RQEyBkTvhzh32PyAsjw",
+    "note": "Giá và nơi bán cần xác nhận trước khi ghé."
+  },
+  {
+    "id": "ca-dang",
+    "name": "Cà đắng trộn cá khô",
+    "image": "./images/mon-ca-dang.jpg",
+    "alt": "Cà đắng trộn cá khô được giới thiệu trên VnExpress",
+    "desc": "Cà đắng thái mỏng trộn cá khô và nước mắm chua ngọt, thêm rau thơm. Vị đắng nhẹ và hậu ngọt tạo nét riêng của bữa cơm Tây Nguyên.",
+    "credit": "Ngôi Sao · qua VnExpress",
+    "source": "https://vnexpress.net/nhung-mon-ngon-doc-quyen-cua-buon-ma-thuot-3516878.html",
+    "imageSource": "https://i1-ngoisao.vnecdn.net/2022/04/22/IMG-0795-JPG-8439-1482224774-4177-1650594047.jpg?w=1020&h=0&q=100&dpr=1&fit=crop&s=U-ruoFI2pJQ3pegl3dFCPw",
+    "note": "Giá và nơi bán cần xác nhận trước khi ghé."
+  }
 ];
 const grid=document.querySelector("#destination-grid");
 const foodGrid=document.querySelector("#food-grid");
@@ -32,7 +72,9 @@ function renderPlaces(filter="all"){
  grid.innerHTML=chosen.map((place,index)=>`<article class="destination-card"><div class="destination-image${place.image?"":" is-placeholder"}">${place.image?`<img src="${place.image}" alt="${escapeHtml(place.alt)}" loading="lazy"/>`:`<div class="image-placeholder" aria-label="Chưa có ảnh đã xác minh đúng địa điểm"><span>CHƯA CÓ ẢNH<br/>ĐÃ XÁC MINH</span><i aria-hidden="true">✳</i></div>`}<span class="image-index">ĐIỂM ${String(index+1).padStart(2,"0")}</span></div><div class="card-body">${place.imageSource?`<a class="photo-credit" href="${escapeHtml(place.imageSource)}" target="_blank" rel="noopener noreferrer" aria-label="Nguồn ảnh ${escapeHtml(place.name)}">Ảnh: ${escapeHtml(place.imageCredit)} ↗</a>`:""}<div class="card-meta"><span>${escapeHtml(place.category)}</span><span>↗</span></div><h3>${escapeHtml(place.name)}</h3><p>${escapeHtml(place.description)}</p><div class="card-foot"><span class="card-cost">${escapeHtml(place.feeLabel)}<small>${escapeHtml(place.distance)}</small></span><span class="card-more" aria-hidden="true">↗</span></div></div></article>`).join("");
  filterResult.textContent=filter==="all"?`${chosen.length} điểm từ bộ dữ liệu`:`${chosen.length} điểm phù hợp bộ lọc`;
 }
-function renderFoods(){foodGrid.innerHTML=foods.map(food=>`<article class="food-card"><span class="food-icon" aria-hidden="true">${food.icon}</span><h3>${escapeHtml(food.name)}</h3><p>${escapeHtml(food.desc)}</p><small>${escapeHtml(food.note)}</small></article>`).join("");}
+function renderFoods(){
+ foodGrid.innerHTML=foods.map(food=>`<article class="food-card"><img class="food-image" src="${escapeHtml(food.image)}" alt="${escapeHtml(food.alt)}" loading="lazy" width="1000" height="750"/><div class="food-body"><h3>${escapeHtml(food.name)}</h3><p>${escapeHtml(food.desc)}</p><small>${escapeHtml(food.note)}</small><a class="food-source" href="${escapeHtml(food.source)}" target="_blank" rel="noopener noreferrer" aria-label="Đọc bài VnExpress về ${escapeHtml(food.name)}">Đọc bài trên VnExpress ↗</a><span class="food-credit">Ảnh: ${escapeHtml(food.credit)}</span></div></article>`).join("");
+}
 renderPlaces();renderFoods();
 document.querySelectorAll(".filter-chip").forEach(button=>button.addEventListener("click",()=>{document.querySelectorAll(".filter-chip").forEach(item=>item.classList.toggle("active",item===button));renderPlaces(button.dataset.filter);}));
 document.querySelector(".menu-toggle").addEventListener("click",event=>{const nav=document.querySelector(".main-nav");const isOpen=nav.classList.toggle("open");event.currentTarget.setAttribute("aria-expanded",String(isOpen));});
