@@ -187,7 +187,6 @@ function renderPlans(){
   result.innerHTML = `<div class="result-summary"><span>Ưu tiên: ${escapeHtml(state.plans.user_input?.preference||"")}</span><span>Ngân sách nhóm: ${formatMoney(selected.budget_check.user_budget)}</span></div>
   <div class="day-tabs" role="tablist" aria-label="Chọn ngày trong hành trình">${dayTabs}</div>
   <div class="result-days">${daysHtml}</div>
-  <p class="estimate-disclaimer">*Chi phí từng mục là ước tính cho cả nhóm; chưa phân bổ chi phí lưu trú, di chuyển và khoản dự phòng.</p>
   <div class="cost-panel">
     <div class="cost-line"><span>Vé tham quan và ăn uống</span><b>${formatMoney(Number(b.tickets?.total||0)+Number(b.meals?.total||0))}</b></div>
     <div class="cost-line cost-hotel"><span>Khách sạn (${Number(b.accommodation?.nights||0)} đêm)</span><span><b>${accommodationBase?`${formatMoney(accommodationLow)} – ${formatMoney(accommodationHigh)}`:"Không phát sinh"}</b><a href="https://www.traveloka.com/" target="_blank" rel="noopener noreferrer" aria-label="Tìm khách sạn trên Traveloka">Xem khách sạn ↗</a></span></div>
