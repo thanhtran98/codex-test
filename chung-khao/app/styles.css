@@ -41,3 +41,6 @@
 .result-option-badge{margin-top:5px;font-size:8px;font-weight:700}
 .budget-fit{color:#2e7d5b}
 .budget-exceeded{color:#a33b2f}
+
+/* Ghi nguồn ảnh ngay dưới khung hình, tự xuống dòng trên điện thoại. */
+.photo-credit{display:block;font-size:10px;line-height:1.5;color:#516453;margin:0 0 10px;text-decoration:underline;text-underline-offset:3px;overflow-wrap:anywhere}.photo-credit:hover{color:#993f25}.photo-credit:focus-visible{outline:2px solid #993f25;outline-offset:3px}
