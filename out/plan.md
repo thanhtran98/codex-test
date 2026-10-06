@@ -321,3 +321,11 @@ Kiểm tiền, lịch và schema bằng test tự động nhỏ có ý nghĩa; k
 Đề xuất duyệt phương án trong tài liệu này: giữ thương hiệu thân thiện; chọn giao diện hai cột; engine kiểm lịch/tiền và AI chọn phương án; backend Python qua mediakit; dữ liệu theo địa giới hiện hành; bỏ dashboard mật độ và tuyên bố chưa có nguồn.
 
 Ngay sau duyệt, thứ tự hành động là: xác nhận repo/đồng hồ/host → gateway và ngân sách → địa giới và dữ liệu cốt lõi → deploy khung/backend → bản P0 trước mốc 30% → nâng cấp/QA/nộp theo cổng tiến độ. Các điều kiện chưa xác minh ở mục 2 phải được xử lý thực tế, không chuyển thành giả định “đã xanh”.
+# Kế hoạch cập nhật 06/10/2026 — mục Điểm đến
+
+1. Rà danh sách và nguồn hiện có — 10 phút.
+2. Tra cứu nguồn giới thiệu, khoảng cách và giá — 20 phút. Công cụ dự kiến: `mediakit search`; khi gateway thiếu key, dùng kết quả web công khai và chỉ giữ dữ kiện đối chiếu được.
+3. Bổ sung dữ liệu và liên kết vào 16 thẻ — 15 phút.
+4. Kiểm tra cú pháp, liên kết, giao diện desktop/mobile và lập báo cáo nguồn — 15 phút.
+
+Không sinh ảnh, video hoặc giọng đọc. Chi phí AI dự kiến 0 USD; sổ chi tiêu cục bộ đầu phiên là 0 USD và gateway BTC không đọc được do thiếu key.

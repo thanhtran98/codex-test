@@ -26,24 +26,35 @@
 
     <main id="main">
       <section class="hero" id="home" aria-labelledby="hero-title">
-        <div class="hero-photo" role="img" aria-label="Cảnh quan hồ Lắk, Đắk Lắk"></div>
+        <div class="hero-gallery" aria-label="Bộ ảnh banner du lịch Đắk Lắk">
+          <div class="hero-slide is-active" data-name="HỒ LẮK" style="background-image:url('./images/ho-lak.jpg');" aria-hidden="false"></div>
+          <div class="hero-slide" data-name="THÁC DRAY NUR" style="background-image:url('https://vnn.1cdn.vn/2021/10/15/uploads-2021-th-c3-a1ng_10-ng-c3-a0y_14-ngn-c3-82-th-c3-a1c-20dray-20nur-45-1634114959-draynu.jpg?fbclid=IwY2xjawUx7_RleHRuA2FlbQIxMABwZG9mBWJyaWQRMVdDdHg1UFRteWxEb1I4d0RzcnRjBmFwcF9pZBAyMjIwMzkxNzg4MjAwODkyAAEeFlqOsMmRrApiZpk-Evbm1oAGZ6yzOr-NjHM3qnrgboqmCKIvhPJA6IPAi4A_aem_AAsxErCzuXyvcx2BxaIYPg');" aria-hidden="true"></div>
+          <div class="hero-slide" data-name="VƯỜN QUỐC GIA YOK ĐÔN" style="background-image:url('https://media.vietravel.com/images/news/rung-khop-mua-thay-la-vuon-quoc-gia-yok-don-dak-lak.png?fbclid=IwY2xjawUx8LZleHRuA2FlbQIxMABwZG9mBWJyaWQRMVdDdHg1UFRteWxEb1I4d0RzcnRjBmFwcF9pZBAyMjIwMzkxNzg4MjAwODkyAAEe16NcViQAXWuglvqywhR8Sla1hOXO6IJR1ruVUBa2Jgc2lXolNiuCkMx6YDw_aem_YdAv9he54ECMdggBrNzsDw');" aria-hidden="true"></div>
+        </div>
         <div class="hero-shade"></div>
         <div class="hero-content">
           <p class="eyebrow light"><span class="eyebrow-line"></span> CAO NGUYÊN · ĐẮK LẮK</p>
-          <h1 id="hero-title">Đường lên đại ngàn,<br /><em>lịch trình theo cách bạn.</em></h1>
-          <p class="hero-copy">Chọn nơi muốn khám phá. Xem gợi ý điểm đến, món ngon và những khoản chi đã có nguồn.</p>
+          <h1 id="hero-title">Đường lên đại ngàn,<br /><em>lịch trình theo cách của bạn.</em></h1>
+          <p class="hero-copy"></p>
+          <p class="hero-copy"></p>
+          <p class="hero-copy"></p>
+
           <div class="hero-actions">
             <a class="button button-light" href="#lap-lich">Bắt đầu lên lịch <span aria-hidden="true">↗</span></a>
             <a class="text-link light-link" href="#diem-den">Khám phá điểm đến <span aria-hidden="true">↓</span></a>
           </div>
         </div>
-        <div class="hero-caption"><span>01 / 03</span><span class="caption-rule"></span><span>HỒ LẮK · ẢNH TƯ LIỆU</span></div>
+        <div class="hero-caption" aria-live="polite">
+          <span id="hero-counter">01 / 03</span>
+          <span class="caption-rule"></span>
+          <span id="hero-location">HỒ LẮK</span>
+        </div>
       </section>
 
       <section class="section destinations-section" id="diem-den">
         <div class="section-heading">
           <div><p class="eyebrow">CHỌN MỘT NẺO ĐƯỜNG</p><h2>Đi đâu giữa miền cao?</h2></div>
-          <p class="section-intro">Từ mặt hồ yên ả đến những khối đá giữa đồng xanh. Mỗi thẻ đều ghi nguồn và tình trạng dữ liệu.</p>
+          <p class="section-intro">Từ mặt hồ yên ả đến những khối đá giữa đồng xanh.</p>
         </div>
         <div class="filter-row" role="group" aria-label="Lọc điểm đến">
           <button class="filter-chip active" data-filter="all" type="button">Tất cả điểm</button>
@@ -53,7 +64,7 @@
           <span class="filter-result" id="filter-result">17 điểm từ bộ dữ liệu</span>
         </div>
         <div class="destination-grid" id="destination-grid"></div>
-        <div class="inline-caveat"><span aria-hidden="true">ⓘ</span><span>Danh sách hiện có theo dữ liệu đã tổng hợp; chưa đại diện đầy đủ cho toàn tỉnh Đắk Lắk mới. Khoảng cách và giá tham khảo từ bài VnExpress cập nhật 04/01/2024, cần xác nhận trước chuyến đi.</span></div>
+        <div class="inline-caveat"><span aria-hidden="true">ⓘ</span><span>Khoảng cách được làm tròn từ trung tâm Buôn Ma Thuột. Giá có dấu * là mức tham khảo tại thời điểm nguồn công bố; hãy mở liên kết trên từng thẻ và xác nhận lại với đơn vị vận hành trước chuyến đi.</span></div>
       </section>
 
       <section class="planner-section" id="lap-lich">

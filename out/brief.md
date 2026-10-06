@@ -107,3 +107,16 @@ Không có bộ đếm khách trực tuyến, biểu đồ mật độ thật, �
 | D3 | Video thuyết trình và ghi hình | Nộp trong hạn riêng, không tính ảnh AI/video du lịch là thay thế |
 
 **Trạng thái:** ma trận trên là tiêu chí cần thực hiện, chưa phải bằng chứng sản phẩm đã đạt. Phiên này chỉ chốt tài liệu; chưa sản xuất, triển khai hay nộp bài.
+# Cập nhật 06/10/2026 — nguồn và khoảng cách điểm đến
+
+| Yêu cầu | Cách đáp ứng |
+|---|---|
+| Kiểm tra điểm thiếu liên kết giới thiệu | Bổ sung trường nguồn và liên kết đọc giới thiệu cho đủ 16/16 thẻ |
+| Dẫn đúng nguồn địa danh | Ưu tiên website đơn vị quản lý, Cục Du lịch Quốc gia, Trung tâm Xúc tiến Du lịch Đắk Lắk và báo chí uy tín |
+| Bổ sung giá nếu có | Chỉ ghi giá có nguồn; trường hợp thiếu dữ liệu hiện hành được ghi rõ “chưa có giá công khai” |
+| Ghi khoảng cách tới Buôn Ma Thuột | Mọi thẻ đều có khoảng cách làm tròn từ trung tâm thành phố; khoảng ước tính được ghi nhãn |
+| Giữ bố cục | Thêm một liên kết văn bản trong thân thẻ, không thay đổi lưới hoặc cấu trúc trang |
+
+Ý tưởng biên tập: mỗi thẻ trả lời nhanh ba câu hỏi “đây là đâu, cách thành phố bao xa, tốn bao nhiêu”, sau đó dẫn người đọc đến nguồn để tự kiểm tra trước chuyến đi.
+
+Ma trận tuân thủ: 16/16 thẻ có nguồn giới thiệu; 16/16 thẻ có khoảng cách; 16/16 thẻ có giá hoặc trạng thái thiếu giá; dữ liệu ước tính được ghi nhãn; không tạo nguồn giả.
