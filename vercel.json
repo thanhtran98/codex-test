@@ -1,0 +1,19 @@
+{
+  "builds": [
+    {
+      "src": "chung-khao/api/index.py",
+      "use": "@vercel/python",
+      "config": {
+        "includeFiles": [
+          "chung-khao/server/**",
+          "chung-khao/app/**",
+          "chung-khao/assets/fonts/**",
+          "chung-khao/tools/mediakit.py"
+        ]
+      }
+    }
+  ],
+  "routes": [
+    { "src": "/(.*)", "dest": "chung-khao/api/index.py" }
+  ]
+}

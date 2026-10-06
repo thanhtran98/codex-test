@@ -1,0 +1,242 @@
+{
+  "version": "2026.10",
+  "clusters": [
+    {
+      "id": "bmt",
+      "name": "TP. Buôn Ma Thuột & Lân cận",
+      "desc": "Trung tâm văn hóa, di sản cồng chiêng, lịch sử và không gian cà phê thủ phủ",
+      "distance_from_center_km": 0
+    },
+    {
+      "id": "krongana",
+      "name": "Cụm Thác Dray Nur & Krông Ana",
+      "desc": "Cảnh quan thác nước hùng vĩ bậc nhất trên dòng sông Sêrêpôk huyền thoại",
+      "distance_from_center_km": 25
+    },
+    {
+      "id": "lak",
+      "name": "Cụm Hồ Lắk & Huyện Lắk",
+      "desc": "Hồ nước ngọt tự nhiên lớn thứ hai Việt Nam và không gian văn hóa người M'Nông",
+      "distance_from_center_km": 55
+    },
+    {
+      "id": "buondon",
+      "name": "Cụm Buôn Đôn & VQG Yok Đôn",
+      "desc": "Mô hình sinh thái bảo tồn ngắm voi thân thiện tự nhiên và cầu treo sông Sêrêpôk",
+      "distance_from_center_km": 40
+    }
+  ],
+  "destinations": [
+    {
+      "id": "baotang-daklak",
+      "name": "Bảo tàng Đắk Lắk",
+      "cluster": "bmt",
+      "category": "van_hoa",
+      "ticket_price": 30000,
+      "duration_hours": 2.0,
+      "opening_hours": "07:30 - 16:30 (Thứ 3 - Chủ nhật)",
+      "address": "Số 12 Lê Duẩn, P. Tự An, TP. Buôn Ma Thuột",
+      "highlight": "Hơn 1.000 hiện vật quý về không gian văn hóa cồng chiêng và lịch sử các dân tộc Tây Nguyên.",
+      "cultural_note": "Giữ trật tự, không sờ tay vào các hiện vật trưng bày cổ.",
+      "source_id": "baotang-daklak"
+    },
+    {
+      "id": "langcaphe-trungnguyen",
+      "name": "Làng Cà phê Trung Nguyên",
+      "cluster": "bmt",
+      "category": "ca_phe",
+      "ticket_price": 0,
+      "avg_drink_price": 65000,
+      "duration_hours": 1.5,
+      "opening_hours": "06:30 - 22:00 hàng ngày",
+      "address": "222 Lý Thái Tổ, P. Tân Lợi, TP. Buôn Ma Thuột",
+      "highlight": "Kiến trúc nhà cổ truyền thống, vườn cà phê cổ thụ và không gian thưởng thức Robusta đặc sản.",
+      "cultural_note": "Tôn trọng không gian thưởng lãm cà phê và nghệ thuật pha chế truyền thống.",
+      "source_id": "khao-sat-thuc-te"
+    },
+    {
+      "id": "chua-khaidoan",
+      "name": "Chùa Sắc Tứ Khải Đoan",
+      "cluster": "bmt",
+      "category": "van_hoa",
+      "ticket_price": 0,
+      "duration_hours": 1.0,
+      "opening_hours": "07:00 - 18:00 hàng ngày",
+      "address": "117 Phan Bội Châu, P. Thống Nhất, TP. Buôn Ma Thuột",
+      "highlight": "Ngôi chùa gỗ lớn nhất phố núi, kết hợp độc đáo giữa kiến trúc cung đình Huế và nhà rông Tây Nguyên.",
+      "cultural_note": "Mặc trang phục kín đáo, lịch sự khi vào chánh điện; đi nhẹ nói khẽ.",
+      "source_id": "sovhttdl-daklak"
+    },
+    {
+      "id": "baotang-thegioicaphe",
+      "name": "Bảo tàng Thế giới Cà phê",
+      "cluster": "bmt",
+      "category": "ca_phe",
+      "ticket_price": 150000,
+      "duration_hours": 2.0,
+      "opening_hours": "08:00 - 17:30 hàng ngày",
+      "address": "Đường Nguyễn Đình Chiểu, P. Tân Lợi, TP. Buôn Ma Thuột",
+      "highlight": "Công trình uốn lượn mang đường nét nhà rông cách điệu, trưng bày lịch sử cà phê toàn cầu.",
+      "cultural_note": "Mua vé chính hãng tại quầy, tuân thủ hướng dẫn chụp ảnh của bảo tàng.",
+      "source_id": "khao-sat-thuc-te"
+    },
+    {
+      "id": "thac-draynur",
+      "name": "Thác Dray Nur",
+      "cluster": "krongana",
+      "category": "thien_nhien",
+      "ticket_price": 40000,
+      "duration_hours": 3.0,
+      "opening_hours": "06:00 - 18:00 hàng ngày",
+      "address": "Xã Dray Sáp, Huyện Krông Ana, Tỉnh Đắk Lắk",
+      "highlight": "Thác nước hùng vĩ dài trên 250m, dòng nước trắng xóa đổ từ vách đá bazan kỳ vĩ.",
+      "cultural_note": "Tuyệt đối không tắm ở khu vực nước xoáy sâu nguy hiểm; không xả rác xuống lòng suối.",
+      "source_id": "sovhttdl-daklak"
+    },
+    {
+      "id": "ho-lak-buon-jun",
+      "name": "Hồ Lắk & Buôn Jun",
+      "cluster": "lak",
+      "category": "van_hoa",
+      "ticket_price": 0,
+      "optional_activity_price": 150000,
+      "optional_activity_name": "Trải nghiệm chèo thuyền độc mộc (thuyền 2 khách)",
+      "duration_hours": 3.5,
+      "opening_hours": "Mở cửa tự do ban ngày",
+      "address": "Thị trấn Liên Sơn, Huyện Lắk, Tỉnh Đắk Lắk",
+      "highlight": "Hồ nước ngọt tự nhiên bao quanh buôn làng M'Nông Rlâm với những mái nhà dài truyền thống.",
+      "cultural_note": "Xin phép trước khi chụp ảnh người dân bản địa; không cho tiền trẻ em trong buôn.",
+      "source_id": "sovhttdl-daklak"
+    },
+    {
+      "id": "vqg-yokdon",
+      "name": "Vườn Quốc gia Yok Đôn (Trải nghiệm ngắm voi thân thiện)",
+      "cluster": "buondon",
+      "category": "sinh_thai",
+      "ticket_price": 60000,
+      "optional_activity_price": 200000,
+      "optional_activity_name": "Tour ngắm voi kiếm ăn tự do trong rừng khộp cùng kiểm lâm viên",
+      "duration_hours": 4.0,
+      "opening_hours": "07:00 - 17:00 hàng ngày",
+      "address": "Xã Krông Na, Huyện Buôn Đôn, Tỉnh Đắk Lắk",
+      "highlight": "Khu bảo tồn rừng khộp độc nhất Việt Nam, tiên phong chuyển đổi mô hình du lịch ngắm voi thân thiện.",
+      "cultural_note": "ĐẮK LẮK TUYỆT ĐỐI KHÔNG CƯỠI VOI. Giữ khoảng cách an toàn tối thiểu 20m theo hướng dẫn của kiểm lâm.",
+      "source_id": "yokdon-national-park"
+    },
+    {
+      "id": "buondon-cautro",
+      "name": "Cụm Cầu treo Buôn Đôn & Nhà sàn Cổ",
+      "cluster": "buondon",
+      "category": "van_hoa",
+      "ticket_price": 40000,
+      "duration_hours": 2.0,
+      "opening_hours": "07:30 - 17:00 hàng ngày",
+      "address": "Buôn Trí, Xã Krông Na, Huyện Buôn Đôn",
+      "highlight": "Hệ thống cầu treo bằng tre vắt qua rễ cây si trăm tuổi soi bóng dòng Sêrêpôk, tìm hiểu huyền thoại săn bắt voi.",
+      "cultural_note": "Tôn trọng không gian tâm linh nhà mồ và hiện vật gia bảo của đồng bào.",
+      "source_id": "sovhttdl-daklak"
+    }
+  ],
+  "meals": [
+    {
+      "id": "sang-bundo",
+      "meal_type": "breakfast",
+      "name": "Bún đỏ Buôn Ma Thuột & Cà phê sáng",
+      "price_per_person": 45000,
+      "desc": "Món bún sợi to màu hạt điều đặc trưng ăn kèm trứng cút, rau cần nước, tóp mỡ giòn và ly cà phê sữa đá."
+    },
+    {
+      "id": "trua-comlam-ganuong",
+      "meal_type": "lunch",
+      "name": "Cơm lam gà nướng sa lửa Bản Đôn",
+      "price_per_person": 160000,
+      "desc": "Gà đồi ướp lá rừng nướng than củi giòn thơm ăn cùng ống cơm lam dẻo thơm và muối ớt kiến vàng."
+    },
+    {
+      "id": "toi-lau-calang",
+      "meal_type": "dinner",
+      "name": "Lẩu cá lăng Sêrêpôk nấu măng chua & rau rừng",
+      "price_per_person": 170000,
+      "desc": "Cá lăng sông thịt săn ngọt lịm nấu măng le rừng Tây Nguyên, ăn cùng bún tươi và rau đọt mây bép."
+    },
+    {
+      "id": "trua-amthuc-bmt",
+      "meal_type": "lunch",
+      "name": "Bánh ướt thịt nướng đĩa chồng & Gỏi cà đắng",
+      "price_per_person": 110000,
+      "desc": "Thưởng thức phong cách cuốn bánh ướt độc đáo tại phố Lê Thánh Tông kèm món gỏi cà đắng cá khô trứ danh."
+    },
+    {
+      "id": "toi-com-nha-dai",
+      "meal_type": "dinner",
+      "name": "Bữa cơm buôn làng: Canh cà đắng, thịt heo đồng bào nướng ống tre",
+      "price_per_person": 140000,
+      "desc": "Bữa tối ấm cúng mang hương vị bản địa Tây Nguyên tại homestay nhà dài buôn AKô Dhông hoặc Buôn Jun."
+    }
+  ],
+  "accommodations": {
+    "homestay": {
+      "id": "homestay",
+      "name": "Homestay Nhà dài sinh thái bản địa",
+      "price_per_room_night": 450000,
+      "desc": "Trải nghiệm không gian kiến trúc gỗ truyền thống của người Êđê/M'Nông, thoáng đãng, thân thiện."
+    },
+    "hotel": {
+      "id": "hotel",
+      "name": "Khách sạn tiêu chuẩn 3 sao trung tâm",
+      "price_per_room_night": 650000,
+      "desc": "Phòng tiện nghi máy lạnh, wifi, gần khu phố đi bộ và chợ đêm Buôn Ma Thuột."
+    }
+  },
+  "transports": {
+    "motorbike": {
+      "id": "motorbike",
+      "name": "Thuê xe máy tự túc (1-2 người)",
+      "daily_rate": 150000,
+      "fuel_per_day": 50000,
+      "min_pax": 1,
+      "max_pax": 2,
+      "desc": "Linh hoạt di chuyển trên các cung đường đồi thông và phố núi."
+    },
+    "car_small": {
+      "id": "car_small",
+      "name": "Xe ô tô du lịch 4-7 chỗ có tài xế (3-4 người)",
+      "daily_rate": 900000,
+      "fuel_per_day": 0,
+      "min_pax": 3,
+      "max_pax": 4,
+      "desc": "Bao gồm xe riêng, tài xế bản địa thông thạo cung đường, xăng dầu và cầu đường."
+    },
+    "car_large": {
+      "id": "car_large",
+      "name": "Xe ô tô du lịch 16 chỗ có tài xế (5-8 người)",
+      "daily_rate": 1300000,
+      "fuel_per_day": 0,
+      "min_pax": 5,
+      "max_pax": 8,
+      "desc": "Rộng rãi cho gia đình/nhóm bạn, có tài xế am hiểu văn hóa Đắk Lắk phục vụ suốt tuyến."
+    }
+  },
+  "responsible_rules": [
+    {
+      "icon": "🐘",
+      "title": "Bảo tồn loài voi – Tuyệt đối KHÔNG cưỡi voi",
+      "desc": "Đắk Lắk đã chính thức chuyển đổi sang mô hình du lịch thân thiện với voi từ năm 2021. Du khách chỉ tham quan ngắm voi kiếm ăn tự nhiên từ xa tại VQG Yok Đôn để bảo vệ phúc lợi động vật."
+    },
+    {
+      "icon": "🏡",
+      "title": "Tôn trọng phong tục nhà dài Êđê và M'Nông",
+      "desc": "Khi lên nhà dài, chú ý cầu thang Cái (có hình đôi bầu sữa và vầng trăng khuyết dành cho phụ nữ và khách quý). Xin phép gia chủ trước khi chụp ảnh lưu niệm."
+    },
+    {
+      "icon": "🌿",
+      "title": "Giữ gìn đại ngàn nguyên sơ",
+      "desc": "Không vứt rác, túi ni lông tại khu vực thác ghềnh và lòng sông Sêrêpôk. Tuân thủ tuyệt đối quy định an toàn PCCC khi đi dã ngoại trong rừng khộp mùa khô."
+    },
+    {
+      "icon": "☕",
+      "title": "Ủng hộ kinh tế bản địa và cà phê công bằng",
+      "desc": "Ưu tiên thưởng thức và mua các sản phẩm nông sản, cà phê đặc sản trực tiếp từ nông hộ và hợp tác xã địa phương có chứng nhận xuất xứ Đắk Lắk."
+    }
+  ]
+}

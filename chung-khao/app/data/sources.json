@@ -1,0 +1,36 @@
+{
+  "version": "2026.10",
+  "last_verified": "2026-10-06",
+  "sources": [
+    {
+      "id": "daklak-portal",
+      "name": "Cổng Thông tin Điện tử Tỉnh Đắk Lắk",
+      "url": "https://daklak.gov.vn",
+      "scope": "Địa giới hành chính, chủ trương phát triển du lịch bền vững và chuyển đổi số"
+    },
+    {
+      "id": "sovhttdl-daklak",
+      "name": "Sở Văn hóa, Thể thao và Du lịch Đắk Lắk",
+      "url": "https://sovhttdl.daklak.gov.vn",
+      "scope": "Di tích văn hóa cồng chiêng, danh thắng thiên nhiên, giá vé và quy chế ứng xử"
+    },
+    {
+      "id": "yokdon-national-park",
+      "name": "Vườn Quốc gia Yok Đôn & Animals Asia",
+      "url": "https://yokdonnationalpark.vn",
+      "scope": "Mô hình du lịch sinh thái thân thiện không cưỡi voi, bảo tồn đa dạng sinh học"
+    },
+    {
+      "id": "baotang-daklak",
+      "name": "Bảo tàng Đắk Lắk",
+      "url": "https://baotangdaklak.vn",
+      "scope": "Giá vé tham quan di sản văn hóa các dân tộc Tây Nguyên (30.000đ/người lớn)"
+    },
+    {
+      "id": "khao-sat-thuc-te",
+      "name": "Khảo sát biểu giá dịch vụ lưu trú và vận chuyển địa phương",
+      "url": "https://daklak.gov.vn/du-lich",
+      "scope": "Mặt bằng giá thuê xe máy, xe du lịch và phòng nghỉ 2026 tại Đắk Lắk"
+    }
+  ]
+}

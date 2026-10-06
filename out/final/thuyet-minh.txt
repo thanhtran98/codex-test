@@ -1,0 +1,57 @@
+ĐẮK LẮK ƠI — TRỢ LÝ DU LỊCH ĐẮK LẮK AI
+Bản thuyết minh sản phẩm (MVP)
+
+1. SẢN PHẨM
+Đắk Lắk Ơi là website desktop tiếng Việt giúp du khách giải bài toán
+"Đi đâu - Ăn gì - Chi phí thế nào" qua vài thao tác. Người dùng nhập
+số người, số ngày, ngân sách và sở thích; hệ thống trả về 3 phương án
+hành trình kèm lịch từng ngày, bữa ăn, lưu trú, phương tiện, dự toán
+theo nhóm và bình quân mỗi người, cùng phần gợi ý AI.
+
+2. CÁCH DÙNG
+- Mở trang chủ, nhập 4 đầu vào bắt buộc: số người (1-8), số ngày (1-3),
+  ngân sách (VND), sở thích.
+- Bấm "Lập hành trình": hệ thống sinh tối đa 3 phương án theo quy tắc,
+  hiển thị chi phí và lịch trình. Bước này không gọi AI, không tốn tiền.
+- Bấm "Lấy gợi ý AI": backend gọi gateway BTC qua chung-khao/tools/mediakit.py để
+  chọn phương án phù hợp nhất và đưa lời giải thích, mẹo thực địa và
+  lời nhắc ứng xử. Nếu AI lỗi/hết giờ, hệ thống chuyển sang gợi ý theo
+  quy tắc và thông báo rõ trạng thái.
+- Bấm biểu tượng đổi (⇄) trên một điểm để đổi sang điểm khác trong dữ
+  liệu; lịch và tiền được tính lại bởi engine Python duy nhất.
+
+3. VAI TRÒ AI VÀ KIẾN TRÚC
+- Mọi năng lực AI đi qua gateway duy nhất của BTC bằng công cụ
+  chung-khao/tools/mediakit.py (subcommand "chat"). Backend không nhận key từ trình
+  duyệt, không ghi key vào mã nguồn; key do môi trường/cấu hình bí mật
+  của host cung cấp.
+- Engine (chung-khao/server/engine.py) là nguồn duy nhất cho lịch trình và công
+  thức tiền. AI chỉ chọn 1 trong 3 phương án đã hợp lệ và giải thích;
+  không tự tạo điểm, giá, địa chỉ hay quy định mới.
+- API: GET /api/meta, POST /api/lap-lich, POST /api/tu-van,
+  POST /api/doi-diem, GET /api/health.
+
+4. NGUỒN VÀ GIẢ ĐỊNH
+- Nguồn được ghi trong chung-khao/app/data/sources.json (Cổng thông tin tỉnh Đắk
+  Lắk, Sở VHTTDL, VQG Yok Đôn, Bảo tàng Đắk Lắk, khảo sát biểu giá).
+- Giá và giờ hoạt động là dữ liệu tham khảo, đối chiếu ngày 06/10/2026;
+  có thể thay đổi theo đơn vị cung cấp.
+- Dự phòng 8% chi phí cơ sở; chưa gồm vé đi/rời vùng và mua sắm.
+- Khung tham quan dự kiến 08:00-18:00 là giả định thiết kế, không phải
+  giờ mở cửa chính thức của điểm đến.
+
+5. GIỚI HẠN MVP
+- Chưa mở chat tự do, đặt chỗ, thanh toán, đa ngôn ngữ hay bản đồ.
+- Chưa có ảnh minh họa địa danh (tránh nhầm ảnh AI với ảnh thật).
+- Trạng thái AI hiển thị đúng: khi gateway không khả dụng sẽ báo
+  "AI chưa trả kết quả" và dùng phương án quy tắc.
+- Live URL phải được duy trì ít nhất 4 tuần sau nộp; repo là nguồn mã
+  nguồn chính thức theo quy chế BTC.
+
+6. TRIỂN KHAI
+- Python 3.10+, Flask. Cài phụ thuộc: cd chung-khao && pip install -r requirements.txt
+- Chạy thử: cd chung-khao && python server/app.py  (mặc định cổng 8000)
+- Production: gunicorn -w 2 -b 0.0.0.0:$PORT server.app:app
+- Đặt biến môi trường chứa khóa gateway do BTC cấp (có tiền tố theo quy định
+  của gateway) vào biến môi trường của host để kích hoạt AI thật; không đưa
+  khóa vào repo/bundle.

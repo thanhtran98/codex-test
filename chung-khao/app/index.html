@@ -1,0 +1,141 @@
+<!doctype html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#183f32" />
+    <meta name="description" content="Khám phá các điểm đến cao nguyên Đắk Lắk, xem nguồn dữ liệu và phác thảo hành trình theo sở thích, ngân sách." />
+    <title>Đắk Lắk Ơi — Dệt hành trình, rõ chi phí</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Bỏ qua điều hướng</a>
+    <header class="site-header">
+      <a class="brand" href="#home" aria-label="Đắk Lắk Ơi, về đầu trang">
+        <span class="brand-mark" aria-hidden="true"><i></i><i></i><i></i></span>
+        <span><strong>Đắk Lắk Ơi</strong><small>TRỢ LÝ DU LỊCH</small></span>
+      </a>
+      <nav class="main-nav" aria-label="Điều hướng chính">
+        <a href="#diem-den">Điểm đến</a>
+        <a href="#am-thuc">Ăn gì</a>
+        <a href="#lap-lich">Lên lịch trình</a>
+        <a href="#nguon">Nguồn dữ liệu</a>
+      </nav>
+      <a class="header-cta" href="#lap-lich">Lập hành trình <span aria-hidden="true">↗</span></a>
+      <button class="menu-toggle" type="button" aria-expanded="false" aria-label="Mở menu">☰</button>
+    </header>
+
+    <main id="main">
+      <section class="hero" id="home" aria-labelledby="hero-title">
+        <div class="hero-photo" role="img" aria-label="Cảnh quan hồ Lắk, Đắk Lắk"></div>
+        <div class="hero-shade"></div>
+        <div class="hero-content">
+          <p class="eyebrow light"><span class="eyebrow-line"></span> CAO NGUYÊN · ĐẮK LẮK</p>
+          <h1 id="hero-title">Đường lên đại ngàn,<br /><em>lịch trình theo cách bạn.</em></h1>
+          <p class="hero-copy">Chọn nơi muốn khám phá. Xem gợi ý điểm đến, món ngon và những khoản chi đã có nguồn.</p>
+          <div class="hero-actions">
+            <a class="button button-light" href="#lap-lich">Bắt đầu lên lịch <span aria-hidden="true">↗</span></a>
+            <a class="text-link light-link" href="#diem-den">Khám phá điểm đến <span aria-hidden="true">↓</span></a>
+          </div>
+        </div>
+        <aside class="hero-note">
+          <span class="note-icon" aria-hidden="true">✳</span>
+          <div><strong>Dữ liệu có xuất xứ</strong><small>Giá và chặng chưa xác minh được ghi rõ</small></div>
+        </aside>
+        <div class="hero-caption"><span>01 / 03</span><span class="caption-rule"></span><span>HỒ LẮK · ẢNH TƯ LIỆU</span></div>
+      </section>
+
+      <section class="trust-strip" aria-label="Nguyên tắc của trợ lý">
+        <div class="trust-item"><span class="trust-icon">⌖</span><span><b>Chọn theo sở thích</b><small>Thiên nhiên, văn hóa và ẩm thực</small></span></div>
+        <div class="trust-item"><span class="trust-icon">₫</span><span><b>Rõ từng khoản</b><small>Giá có nguồn, giá thiếu được đánh dấu</small></span></div>
+        <div class="trust-item"><span class="trust-icon">↗</span><span><b>Đi theo cụm</b><small>Không tự đoán thời gian lái xe</small></span></div>
+        <div class="trust-note">Bản dữ liệu hiện tập trung vào các điểm vùng cao nguyên.</div>
+      </section>
+
+      <section class="section destinations-section" id="diem-den">
+        <div class="section-heading">
+          <div><p class="eyebrow">CHỌN MỘT NẺO ĐƯỜNG</p><h2>Đi đâu giữa miền cao?</h2></div>
+          <p class="section-intro">Từ mặt hồ yên ả đến những khối đá giữa đồng xanh. Mỗi thẻ đều ghi nguồn và tình trạng dữ liệu.</p>
+        </div>
+        <div class="filter-row" role="group" aria-label="Lọc điểm đến">
+          <button class="filter-chip active" data-filter="all" type="button">Tất cả điểm</button>
+          <button class="filter-chip" data-filter="nature" type="button">Thiên nhiên</button>
+          <button class="filter-chip" data-filter="culture" type="button">Văn hóa</button>
+          <button class="filter-chip" data-filter="near" type="button">Gần Buôn Ma Thuột</button>
+          <span class="filter-result" id="filter-result">17 điểm từ bộ dữ liệu</span>
+        </div>
+        <div class="destination-grid" id="destination-grid"></div>
+        <div class="inline-caveat"><span aria-hidden="true">ⓘ</span><span>Danh sách hiện có theo dữ liệu đã tổng hợp; chưa đại diện đầy đủ cho toàn tỉnh Đắk Lắk mới. Khoảng cách và giá tham khảo từ bài VnExpress cập nhật 04/01/2024, cần xác nhận trước chuyến đi.</span></div>
+      </section>
+
+      <section class="planner-section" id="lap-lich">
+        <div class="planner-top">
+          <div><p class="eyebrow light">HÀNH TRÌNH MAY ĐO</p><h2>Mình đi theo gu<br /><em>của bạn.</em></h2></div>
+          <p>Cho biết quy mô chuyến đi và điều bạn thích. Trợ lý sẽ ghép gợi ý theo cụm, rồi chỉ ra khoản nào đã có giá tham khảo.</p>
+        </div>
+        <div class="planner-layout">
+          <form class="planner-form" id="planner-form">
+            <div class="form-heading"><span class="step-number">01</span><div><strong>Thông tin chuyến đi</strong><small>Ngân sách là tổng cho cả nhóm</small></div></div>
+            <div class="field-grid">
+              <label class="field"><span>Số người</span><span class="input-wrap"><input id="people" type="number" min="1" max="8" value="2" required /><small>người lớn</small></span></label>
+              <label class="field"><span>Số ngày</span><span class="input-wrap"><input id="days" type="number" min="1" max="3" value="2" required /><small>ngày</small></span></label>
+            </div>
+            <label class="field budget-field"><span>Ngân sách dự kiến</span><span class="currency-input"><input id="budget" type="number" min="0" step="100000" value="5000000" required /><b>₫</b></span></label>
+            <div class="field"><span class="field-label">Bạn thích trải nghiệm nào?</span><div class="interest-list">
+              <label class="interest"><input type="checkbox" name="interest" value="nature" checked /><span>Thiên nhiên</span></label>
+              <label class="interest"><input type="checkbox" name="interest" value="culture" /><span>Văn hóa</span></label>
+              <label class="interest"><input type="checkbox" name="interest" value="food" /><span>Ẩm thực</span></label>
+              <label class="interest"><input type="checkbox" name="interest" value="slow" /><span>Đi thong thả</span></label>
+            </div></div>
+            <button class="button button-green submit-button" type="submit">Gợi ý hành trình <span aria-hidden="true">↗</span></button>
+            <button class="button button-light ai-button" id="ai-button" type="button" disabled>Lấy gợi ý AI <span aria-hidden="true">✳</span></button>
+            <p class="form-footnote" id="form-footnote">Bộ gợi ý xếp hạng và tính tiền bằng quy tắc rõ ràng trên máy chủ; AI chỉ chọn phương án phù hợp và giải thích.</p>
+          </form>
+          <div class="plan-result" id="plan-result" aria-live="polite">
+            <div class="result-empty" id="result-empty"><span class="result-sparkle">✳</span><p class="eyebrow">GỢI Ý CỦA BẠN SẼ HIỆN Ở ĐÂY</p><h3>Mỗi chuyến đi<br />bắt đầu từ một lựa chọn.</h3><p>Chọn sở thích và ngân sách để xem các cụm điểm phù hợp trong dữ liệu hiện có.</p><div class="result-rule"><span></span><small>Không tự điền giá còn thiếu</small></div></div>
+            <div class="result-content" id="result-content" hidden></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section food-section" id="am-thuc">
+        <div class="section-heading">
+          <div><p class="eyebrow">NGỒI LẠI BÊN MÂM CƠM</p><h2>Ăn gì cho đúng vị?</h2></div>
+          <p class="section-intro">Một vài món được cẩm nang địa phương nhắc đến. Giá quán chưa có nguồn nên không đưa vào phép tính.</p>
+        </div>
+        <div class="food-grid" id="food-grid"></div>
+      </section>
+
+      <section class="responsible-band">
+        <div class="responsible-pattern" aria-hidden="true"></div>
+        <div class="responsible-copy"><p class="eyebrow light">ĐI NHẸ, NGHE NHIỀU HƠN</p><h2>Gặp gỡ bằng sự<br /><em>tôn trọng.</em></h2><p>Tôn trọng hướng dẫn của người quản lý điểm đến, xin phép trước khi chụp ảnh và không để lại rác. Với các hoạt động liên quan đến động vật, hãy chọn trải nghiệm thân thiện và làm theo hướng dẫn chuyên môn.</p><a class="text-link light-link" href="#nguon">Xem nguồn và giới hạn dữ liệu <span aria-hidden="true">↗</span></a></div>
+        <div class="responsible-stamp"><span>ĐI CÓ<br />TRÁCH NHIỆM</span><b aria-hidden="true">✳</b></div>
+      </section>
+
+      <section class="source-section" id="nguon">
+        <div class="source-heading"><div><p class="eyebrow">MINH BẠCH TỪ ĐẦU</p><h2>Nguồn cho mỗi<br />quyết định.</h2></div><p>Thông tin du lịch thay đổi theo mùa và đơn vị vận hành. Hãy kiểm tra giá, giờ mở cửa, đường đi trước khi khởi hành.</p></div>
+        <div class="source-list">
+          <a class="source-row" href="https://vnexpress.net/cam-nang-du-lich-dak-lak-4453797.html" target="_blank" rel="noreferrer"><span class="source-index">01</span><span><b>VnExpress · Cẩm nang du lịch Đắk Lắk</b><small>Cập nhật 04/01/2024 · địa điểm, một số khoảng cách, giá tham khảo và món ăn</small></span><span class="source-arrow">↗</span></a>
+          <a class="source-row" href="https://sotuphap.daklak.gov.vn/EDE/Articles/Detail/14087?alias=phi-tham-quan-danh-lam-thang-canh-di-tich-lich-su-cong-trinh-van-hoa-bao-tang-tren-dia-ban-tinh" target="_blank" rel="noreferrer"><span class="source-index">02</span><span><b>Sở Tư pháp Đắk Lắk · Mức phí tham quan</b><small>Nghị quyết 24/2024/NQ-HĐND · không tự động gán mức chung cho từng điểm</small></span><span class="source-arrow">↗</span></a>
+          <a class="source-row" href="https://tour.yokdonnationalpark.vn/EN/service-price.html" target="_blank" rel="noreferrer"><span class="source-index">03</span><span><b>Vườn quốc gia Yok Don · Giá dịch vụ</b><small>Trang đơn vị quản lý, liên kết bảng giá cập nhật tháng 01/2025</small></span><span class="source-arrow">↗</span></a>
+          <div class="source-row source-note"><span class="source-index">04</span><span><b>Phạm vi nội dung hiện tại</b><small>Bộ dữ liệu đang có chủ yếu là các điểm vùng cao nguyên; chưa bao quát hết vùng duyên hải của tỉnh sau sắp xếp năm 2025.</small></span><span class="source-arrow">ⓘ</span></div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer"><a class="brand footer-brand" href="#home"><span class="brand-mark" aria-hidden="true"><i></i><i></i><i></i></span><span><strong>Đắk Lắk Ơi</strong><small>DỆT HÀNH TRÌNH, RÕ CHI PHÍ</small></span></a><p>Gợi ý để bắt đầu. Kiểm tra thực tế trước khi đi.</p><a href="#home" class="back-top">Lên đầu trang ↑</a></footer>
+    <button class="chat-launcher" id="chat-launcher" type="button" aria-label="Mở trợ lý Đắk Lắk Ơi" aria-expanded="false" aria-controls="chat-panel">
+      <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="M20 11.5a8 8 0 0 1-8 8H5l-3 2v-10a9 9 0 0 1 18 0Z"/><path d="M7 10h8M7 14h5"/></svg>
+      <span>Hỏi Đắk Lắk Ơi</span>
+    </button>
+    <section class="chat-panel" id="chat-panel" role="dialog" aria-labelledby="chat-title" hidden>
+      <header class="chat-header"><div><strong id="chat-title">Đắk Lắk Ơi</strong><small>Trợ lý cho chuyến đi của bạn</small></div><button id="chat-close" type="button" aria-label="Đóng trò chuyện">×</button></header>
+      <div class="chat-messages" id="chat-messages" role="log" aria-live="polite" aria-label="Nội dung trò chuyện"><p class="chat-message chat-assistant">Chào bạn! Bạn muốn khám phá nơi nào, ăn món gì hay lên lịch đi Đắk Lắk? Kể mình nghe nhé.</p></div>
+      <p class="chat-status" id="chat-status" role="status"></p>
+      <form class="chat-form" id="chat-form"><label class="chat-label" for="chat-input">Câu hỏi của bạn</label><div class="chat-compose"><textarea id="chat-input" rows="2" maxlength="2000" placeholder="Mình muốn đi Đắk Lắk 2 ngày…" required></textarea><button id="chat-send" type="submit" aria-label="Gửi tin nhắn">Gửi ↗</button></div></form>
+      <div class="chat-footer"><small>AI có thể nhầm. Hãy kiểm tra thông tin trước khi đi. Tin nhắn được gửi tới dịch vụ AI; đừng nhập thông tin nhạy cảm.</small><button id="chat-reset" type="button">Chat mới</button></div>
+    </section>
+    <script src="./app.js" defer></script>
+    <script src="./chat.js" defer></script>
+  </body>
+</html>

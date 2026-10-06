@@ -1,0 +1,1327 @@
+window["ga-disable-G-46Z0Q95HSN"] = true;
+Chi tiết bài thi Vòng 2 - Thực chiến AI
+/*# sourceURL=wp-img-auto-sizes-contain-inline-css */
+/*# sourceURL=/wp-includes/css/dist/block-library/common.min.css */
+/*! This file is auto-generated */
+/*# sourceURL=/wp-includes/css/classic-themes.min.css */
+/*# sourceURL=global-styles-inline-css */
+//# sourceURL=jquery-js-after
+gtag("js", new Date());
+gtag("set", "developer_id.dZTNiMT", true);
+gtag("config", "GT-KTTMN3FS");
+//# sourceURL=google_gtagjs-js-after
+opacity: 1 !important;
+transform: translateY(0) !important;
+animation: ripple 0.6s ease-out;
+width: 0;
+height: 0;
+opacity: 1;
+width: 200px;
+height: 200px;
+opacity: 0;
+scroll-behavior: smooth;
+outline: 2px solid rgba(102, 126, 234, 0.6);
+outline-offset: 2px;
+Hồ Nguyên Khang
+Đội thi
+Dashboard
+Chỉnh sửa hồ sơ
+Đổi mật khẩu
+Quản lý thành viên
+Về trang chủ
+Đăng xuất
+Dashboard
+›
+Chi tiết bài thi
+📋 Bảng 1
+🟢 Đang diễn ra                        ⏳ Chưa nộp
+⏰ Thông tin thời gian
+⏰
+Bắt đầu thi
+06/10/2026 09:00
+Đã bắt đầu
+→
+📝
+Hoạt động
+Còn lại 1 giờ 51 phút
+Đang diễn ra
+→
+🔒
+Kết thúc
+06/10/2026 11:00
+Chưa kết thúc
+🚨
+Deadline nộp bài
+06/10/2026 11:10
+Chưa đến thời gian nộp bài
+📋 Hướng dẫn thi
+Quy tắc chung:
+Các đội thi được quyền tự do lựa chọn mọi hệ điều hành, môi trường phát triển (IDE), phần mềm thiết kế và công cụ biên tập ( bao gồm các opensource như : HyperFrames, Open slide..) phù hợp nhất để đạt năng suất cao nhất.
+Cấm dùng tính năng AI tạo sinh tích hợp sẵn trong phần mềm để chỉnh sửa/làm đẹp sản phẩm (ví dụ: Generative Fill/Expand của Photoshop; Magic Studio của Canva; AI Script/Auto Caption/Extend của Premiere, CapCut; Ask Gemini trong google workspace...).
+Mọi năng lực trí tuệ nhân tạo (sinh mã nguồn, suy luận logic, tạo ảnh, sinh video, âm thanh, giọng đọc..) sử dụng trong toàn bộ quá trình thi bắt buộc 100% phải đi qua Gateway duy nhất của BTC bằng API Key được cấp. Nghiêm cấm tuyệt đối việc sử dụng bất kỳ mô hình AI, API cá nhân hoặc tính năng sinh tự động (Generative AI) nào nằm ngoài hệ thống kiểm soát của BTC.
+Mọi sản phẩm cuối cùng nộp về BTC phải chứng minh được nguồn gốc hình thành thông qua dữ liệu nhật ký (audit log) trên hệ thống Gateway và lịch sử phát triển trên kho mã nguồn GitHub do BTC quản lý.
+Tuyệt đối không mở trình duyệt, truy cập bất kỳ nền tảng Chatbot, AI web hay AI generator nào bên ngoài (bao gồm: chatgpt.com, claude.ai, gemini.google.com, perplexity.ai, poe.com, v0.dev, bolt.new, lovable.dev, midjourney.com, elevenlabs.io...).
+Toàn bộ mã nguồn, kịch bản, hình ảnh, video và âm thanh trong bài thi phải do đội thi tự tư duy, viết prompt và chỉ đạo công cụ AI của BTC tạo sinh trong thời gian diễn ra ca thi.
+Nghiêm cấm việc sao chép nguyên mẫu mã nguồn, template có sẵn trên Internet.
+Tài nguyên do ban tổ chức cung cấp
+Mỗi đội thi sẽ nhận được gói tài nguyên chính thức tại thời điểm phát đề:
+1. Cổng giao tiếp AI tập trung (BTC AI Gateway)
+Hạn mức tín dụng: Cấp sẵn $50/đội. Hạn mức này được trừ dần theo bảng giá hệ thống quy chuẩn của BTC dựa trên số lượng token (input/output) và thời lượng media sinh ra trong ca thi. Xem chi tiết tại: https://docs.thucchien.ai/docs/round-2
+Mỗi đội được cấp 02 API Keys dùng chung một hạn mức tín dụng (01 key dành cho 02 máy thi của đội, 01 key tích hợp vào sản phẩm khi cần).
+2. Kho lưu trữ mã nguồn chuẩn (GitHub Repository)
+BTC khởi tạo sẵn cho mỗi đội 01 GitHub Repository riêng biệt nằm trong GitHub Organization của BTC, và cấp quyền cho thành viên trong team.
+Toàn bộ quá trình làm bài phải diễn ra trên GitHub Repo do BTC tạo sẵn cho từng đội lúc bắt đầu ca thi. Không được code trên repo cá nhân bên ngoài rồi copy vào.
+Mọi thao tác commit/push bắt buộc phải dùng chính xác tài khoản GitHub (Username/Email) đã đăng ký trước với BTC. Mọi commit từ tài khoản lạ sẽ bị coi là vi phạm quy chế thi.
+3. Model Context Protocol - MCP
+Các tài nguyên không được phép dùng
+Toàn bộ các MCP Server kết nối trực tiếp đến API của các hãng AI bên thứ ba (như MCP OpenAI, MCP Anthropic, MCP Perplexity, MCP Tavily AI Synth...).
+Các MCP đóng vai trò máy chủ trung chuyển (tunnel/proxy) đẩy prompt ra các dịch vụ AI bên ngoài hệ thống cho phép của BTC.
+📝 Đề thi & Nội dung
+✅
+Đề thi đã mở
+Bạn có thể xem và làm bài thi ngay bây giờ
+Tóm tắt:
+Chủ đề Du lịch địa phương.
+Trợ lý Du lịch Đắk Lắk AI là một website thông minh giúp du khách cá nhân hóa hành trình khám phá văn hóa và thiên nhiên Đắk Lắk. Sản phẩm mang đến hành trình "may đo" tối ưu chi phí cho du khách, đồng thời hỗ trợ địa phương điều phối luồng khách, bảo tồn văn hóa và thúc đẩy chuyển đổi số du lịch.
+Yêu cầu của đề thi:
+Thiết kế 01 Trợ lý AI Du lịch Đắk Lắk (Web Desktop) hiện đại, trực quan, giới thiệu trọn vẹn vẻ đẹp văn hóa - thiên nhiên Đắk Lắk hiện tại đến du khách trong và ngoài nước. Giúp du khách giải quyết bài toán "Đi đâu - Ăn gì - Chi phí thế nào" chỉ qua vài thao tác đơn giản, tạo ra lịch trình hợp lý, minh bạch và khả thi trước khi bắt đầu hành trình
+Website cần cung cấp thông tin đầy đủ, tin cậy, bố cục logic, giao diện thẩm mỹ và thân thiện với người dùng.
+Sản phẩm là sáng tạo mới hoàn toàn với AI thông qua AI API được cung cấp, đáp ứng đủ yêu cầu của đề, phù hợp quy định pháp lý và giáo dục, không cover hay sáng tác từ một sản phẩm có sẵn
+Ngôn ngữ: tiếng Việt
+Bối cảnh cho yêu cầu:
+Du khách hiện đại ưa chuộng du lịch tự túc và có nhu cầu cao về việc cá nhân hóa chuyến đi theo sở thích và ngân sách. Tuy nhiên, họ gặp nhiều rào cản khi tự lên lịch trình du lịch Đắk Lắk do thông tin trên mạng bị phân mảnh, thiếu minh bạch và lỗi thời.
+Trợ lý Du lịch Đắk Lắk AI ra đời giải quyết trọn vẹn thách thức này: giúp du khách sở hữu hành trình "may đo" tối ưu chi phí; hỗ trợ địa phương điều phối luồng khách và bảo tồn văn hóa; đồng thời thúc đẩy chuyển đổi số, tạo cầu nối hiệu quả cho doanh nghiệp và cơ quan quản lý.
+Nội dung
+Website có khả năng gợi ý kế hoạch lịch trình theo nhu cầu của du khách với những yêu cầu cơ bản:
+Số người đi
+Số ngày đi
+Ngân sách (Việt Nam đồng)
+Sở thích
+Thời gian:
+Thời gian thực hiện: 120 phút (và +10 phút để các đội hoàn thành nộp bài).
+Nộp Bài:
+Các đội thi cần nộp bài qua hệ thống trang thi thucchien.ai trước khi thời gian thi của đội thi kết thúc:
+Nộp sản phẩm dưới dạng Live URL , đội thi được phép sử dụng các nền tảng đám mây miễn phí hoặc tài khoản cá nhân (Vercel, Render, Railway, Fly.io, Cloudflare Pages ...). Đường link website cần được duy trì ít nhất 4 tuần để BTC chấm thi và làm chất liệu truyền hình.
+Link Github tới source code trên Repo của BTC
+Và các tài liệu bổ sung khác
+Ngoài ra, các đội thi cần nộp các tài liệu sau trong vòng 24h kể từ khi thời gian thi của đội thi kết thúc để hoàn thành phần thi của đội. Link form nộp bài được BTC cung cấp:
+Nộp video đội thi thuyết trình về sản phẩm đã hoàn thành và chia sẻ quá trình làm sản phẩm (độ dài 3 - 6 phút)
+Nộp video ghi hình đội thi theo yêu cầu và hướng dẫn của BTC
+Link nộp tài liệu (trong vòng 24h: https://forms.gle/aH1q3MnSxHMfq9GXA  )
+🔐 Dữ liệu riêng cho đội AGENT FORGE
+Gateway API Key 1: sk-fAo61aYdyj0OiHcFgp8-TA
+Gateway API Key 2: sk-UW-aRAw4lKrJWlUvNA5bxQ
+AI Log API Key: aitc_2c6cd7242c3cc7e122f783ad211db334b4e1af370b078770f0f466b52f31cd77
+📤 Nộp bài thi
+Cổng nộp bài đã mở
+Bạn có thể nộp bài thi ngay bây giờ
+⏰ Thời gian còn lại:
+2 giờ 01 phút 28 giây
+📤 Nộp bài thi
+📝 Tiêu đề bài nộp: *
+📄 Mô tả bài nộp:
+🔗 Link GitHub tới source code: *
+💡 Vui lòng cung cấp link GitHub repository thư mục chứa source code của bài thi
+📁 File đính kèm:
+Định dạng file chấp nhận: ZIP, RAR, PDF, DOC, DOCX, PPT, PPTX, XLS, XLSX, MP4, AVI, MP3, WAV, TXT, JPG, JPEG, PNG, GIF
+NOTE: Nếu file quá nặng vui lòng đẩy lên drive của bạn (mở quyền chia sẻ link công khai) và đính kèm link vào phần bổ sung phía dưới!
+💾 Tổng dung lượng tối đa: 500MB | 📁 Tối đa 20 files
+📁 0 file đã chọn
+💾 Tổng dung lượng: 0 MB
+🗑️ Xóa tất cả
+🔗 Links bổ sung:
+💭 Ghi chú cho BGK:
+🔐 Xác nhận bảo mật: *
+Xác nhận bạn không phải robot
+📤
+Đang xử lý files...
+Chuẩn bị upload...
+⏳
+Đang xử lý bài thi...
+Vui lòng đợi, không đóng trang!
+✅ Xác thực thông tin
+⏳ Upload files...
+⏳ Lưu dữ liệu...
+⏳ Hoàn tất...
+📤 Nộp bài thi ngay
+Xác nhận thông tin nộp bài
+×
+📝 Thông tin bài nộp
+Tiêu đề:
+Mô tả:
+File đính kèm:
+Tổng dung lượng:
+GitHub Link:
+Links bổ sung:
+Ghi chú cho BGK:
+⚠️ Lưu ý quan trọng
+• Sau khi xác nhận, bạn không thể chỉnh sửa bài nộp
+• Vui lòng kiểm tra kỹ thông tin trước khi nộp
+❌ Hủy bỏ
+✅ Xác nhận nộp bài
+← Quay lại Dashboard
+let uploadProgressInterval;
+let currentStep = 1;
+let selectedFiles = [];
+const aitcMaxTotalMb = (window.AITC_GCS && AITC_GCS.maxTotalMb) ? AITC_GCS.maxTotalMb : 500;
+const aitcMaxFiles = (window.AITC_GCS && AITC_GCS.maxFiles) ? AITC_GCS.maxFiles : 20;
+selectedFiles = selectedFiles.filter(item => String(item.id) !== String(fileId));
+updateFilesDisplay();
+autoSaveDraft();
+selectedFiles = [];
+const fileInput = document.getElementById('submission_files');
+fileInput.value = '';
+updateFilesDisplay();
+autoSaveDraft();
+// Make clearAllFiles available globally
+window.clearAllFiles = clearAllFiles;
+// Show confirmation modal
+populateConfirmationModal();
+const modal = document.getElementById('confirmationModal');
+modal.style.display = 'flex';
+document.body.style.overflow = 'hidden';
+closeConfirmationModal();
+closeConfirmationModal();
+// Populate confirmation modal with form data
+const title = document.getElementById('submission_title').value.trim();
+const description = document.getElementById('submission_description').value.trim();
+const githubLink = document.getElementById('submission_github_link').value.trim();
+const links = document.getElementById('submission_links').value.trim();
+const notes = document.getElementById('submission_notes').value.trim();
+let totalSize = 0;
+let fileList = [];
+totalSize += file.size;
+// Process links
+let linksList = [];
+linksList = links.split('\n').filter(link => link.trim()).map(link => link.trim());
+document.getElementById('confirmTitle').textContent = title || 'Không có tiêu đề';
+document.getElementById('confirmDescription').textContent = description || 'Không có mô tả';
+document.getElementById('confirmFiles').innerHTML = fileList.length > 0 ? fileList.join('<br>') : 'Không có file đính kèm';
+document.getElementById('confirmTotalSize').textContent = (totalSize / (1024 * 1024)).toFixed(2) + ' MB';
+// Update GitHub link section
+const confirmGithubLink = document.getElementById('confirmGithubLink');
+confirmGithubLink.textContent = 'Chưa cung cấp GitHub link';
+// Update links section
+const confirmLinks = document.getElementById('confirmLinks');
+confirmLinks.innerHTML = linksList.map(link =>
+).join('');
+confirmLinks.innerHTML = 'Không có links bổ sung';
+// Update notes section
+const confirmNotes = document.getElementById('confirmNotes');
+confirmNotes.textContent = notes || 'Không có ghi chú cho BGK';
+// Close confirmation modal
+const modal = document.getElementById('confirmationModal');
+modal.style.display = 'none';
+document.body.style.overflow = 'auto';
+// Confirm submission
+closeConfirmationModal();
+proceedWithSubmission();
+// Proceed with actual form submission
+const maxTotalSize = 500 * 1024 * 1024; // 500MB total
+let totalSize = 0;
+// Calculate total size of all files
+totalSize += file.size;
+// Check total size limit
+const totalSizeMB = (totalSize / (1024 * 1024)).toFixed(2);
+alert('⚠️ Tổng dung lượng file vượt quá giới hạn 500MB! Dung lượng hiện tại: ' + totalSizeMB + 'MB');
+return;
+// Check reCAPTCHA
+const recaptchaResponse = grecaptcha.getResponse();
+const hiddenField = document.getElementById('g-recaptcha-response');
+hiddenField.value = recaptchaResponse;
+grecaptcha.reset();
+alert('⚠️ Vui lòng xác thực reCAPTCHA trước khi nộp bài!');
+return;
+showLoadingOverlay();
+nextStep();
+// Show progress for large files (fake progress only when NOT using GCS)
+const totalSizeMB = (totalSize / (1024 * 1024)).toFixed(2);
+const progressBar = document.getElementById('uploadProgress');
+const progressFill = document.getElementById('progressFill');
+const progressStatus = document.getElementById('progressStatus');
+const progressDetails = document.getElementById('progressDetails');
+const useGcs = window.AITC_GCS_UPLOAD && AITC_GCS_UPLOAD.isEnabled();
+progressBar.style.display = 'block';
+progressDetails.innerHTML = `
+<div class="file-list">
+</div>
+`;
+let progress = 0;
+progress += Math.random() * 15;
+if (progress > 90) progress = 90;
+progressFill.style.width = progress + '%';
+const submitBtn = document.getElementById('submitBtn');
+submitBtn.textContent = '📤 Đang xử lý...';
+submitBtn.disabled = true;
+// Submit form via AJAX
+submitFormViaAjax();
+const fileInput = document.getElementById('submission_files');
+const filesInfo = document.getElementById('selected-files-info');
+const maxTotalSize = 500 * 1024 * 1024; // 500MB
+const newFiles = [];
+// Add new files
+const file = fileInput.files[i];
+const exists = selectedFiles.some(existingFile =>
+existingFile.name === file.name && existingFile.size === file.size
+);
+file: file,
+id: Date.now() + Math.random() + i
+fileInput.value = '';
+// Calculate total size
+let totalSizeBytes = 0;
+totalSizeBytes += file.size;
+totalSizeBytes += file.size;
+// Check total size
+alert('⚠️ Tổng dung lượng file vượt quá giới hạn 500MB!');
+updateFilesDisplay();
+return;
+selectedFiles = [...selectedFiles, ...newFiles];
+updateFilesDisplay();
+filesInfo.style.display = 'none';
+const filesInfo = document.getElementById('selected-files-info');
+const filesCount = document.getElementById('files-count');
+const totalSize = document.getElementById('total-size');
+const filesList = document.getElementById('files-list');
+// Calculate total size
+let totalSizeBytes = 0;
+totalSizeBytes += file.size;
+// Update UI
+filesCount.textContent = selectedFiles.length;
+totalSize.textContent = (totalSizeBytes / (1024 * 1024)).toFixed(2) + ' MB';
+// Show warning if approaching file limit
+const maxFiles = 20;
+filesCount.style.color = '#ff4444';
+filesCount.style.fontWeight = 'bold';
+filesCount.style.color = '#ff8800';
+filesCount.style.fontWeight = 'bold';
+filesCount.style.color = '';
+filesCount.style.fontWeight = '';
+// Generate files list
+filesList.innerHTML = '';
+const fileItem = document.createElement('div');
+fileItem.className = 'file-info-card';
+const displayName = file.name.length > 35 ?
+file.name.substring(0, 32) + '...' : file.name;
+fileItem.innerHTML = `
+<span class="file-icon">📄</span>
+<div class="file-details">
+</div>
+`;
+filesList.appendChild(fileItem);
+// Add event listeners to remove buttons
+const fileId = this.getAttribute('data-file-id');
+removeSelectedFile(fileId);
+filesInfo.style.display = 'block';
+filesInfo.style.display = 'none';
+const formatsInfo = document.querySelector('.file-formats-info');
+formatsInfo.style.display = formatsInfo.style.display === 'none' ? 'block' : 'none';
+let autoSaveTimer;
+const examId = 1541;
+const draft = JSON.parse(savedDraft);
+// Only restore form fields, NOT files
+document.getElementById(id).value = draft[id.replace('submission_', '')];
+// Clear files - do NOT restore selectedFiles
+selectedFiles = [];
+updateFilesDisplay();
+// Clear file input
+const fileInput = document.getElementById('submission_files');
+fileInput.value = '';
+console.log('Draft loaded - form fields restored, files cleared');
+console.error('Error loading draft:', e);
+const examId = 1541;
+title: document.getElementById('submission_title').value || '',
+description: document.getElementById('submission_description').value || '',
+github_link: document.getElementById('submission_github_link').value || '',
+links: document.getElementById('submission_links').value || '',
+notes: document.getElementById('submission_notes').value || '',
+// Do NOT save files to localStorage
+timestamp: Date.now()
+const saveIndicator = document.createElement('div');
+saveIndicator.className = 'save-indicator';
+saveIndicator.textContent = 'Đã lưu nháp!';
+document.body.appendChild(saveIndicator);
+saveIndicator.style.opacity = '1';
+saveIndicator.style.opacity = '0';
+setTimeout(() => saveIndicator.remove(), 500);
+const inputs = document.querySelectorAll('#examSubmissionForm input:not([type="file"]), #examSubmissionForm textarea');
+clearTimeout(autoSaveTimer);
+autoSaveTimer = setTimeout(autoSaveDraft, 2000);
+const fileInput = document.getElementById('submission_files');
+updateFileInfo();
+// Do NOT auto-save when files change - files are not saved in draft
+const examId = 1541;
+document.getElementById('loadingOverlay').style.display = 'flex';
+document.getElementById('uploadProgress').style.display = 'block';
+updateLoadingSteps();
+const steps = document.querySelectorAll('.loading-steps .step');
+step.innerHTML = index + 1 < currentStep ? '✅ ' + step.textContent.replace(/⏳ |✅ /, '') :
+'⏳ ' + step.textContent.replace(/✅ |⏳ /, '');
+currentStep++;
+updateLoadingSteps();
+document.getElementById('loadingOverlay').style.display = 'none';
+document.getElementById('uploadProgress').style.display = 'none';
+clearInterval(uploadProgressInterval);
+uploadProgressInterval = null;
+const examSubmissionForm = document.getElementById('examSubmissionForm');
+e.preventDefault(); // Prevent default form submission
+e.stopPropagation(); // Stop event bubbling
+console.log('=== FORM SUBMISSION STARTED ===');
+console.log('Selected files count:', selectedFiles.length);
+console.log('Selected files:', selectedFiles);
+// Check file count limit first
+const maxFiles = 20; // PHP default max_file_uploads is usually 20
+return;
+// Validate title first
+const title = document.getElementById('submission_title').value.trim();
+alert('Vui lòng nhập tiêu đề bài nộp!');
+document.getElementById('submission_title').focus();
+return false;
+// Validate GitHub link
+const githubLink = document.getElementById('submission_github_link').value.trim();
+alert('Vui lòng cung cấp link GitHub tới source code!');
+document.getElementById('submission_github_link').focus();
+return false;
+// Validate GitHub URL format
+const githubUrlPattern = /^https:\/\/github\.com\/.+/;
+alert('Link GitHub không hợp lệ. Vui lòng cung cấp link GitHub hợp lệ (ví dụ: https://github.com/username/repository).');
+document.getElementById('submission_github_link').focus();
+return false;
+// Debug selectedFiles before validation
+console.log('=== FILE VALIDATION DEBUG ===');
+console.log('selectedFiles:', selectedFiles);
+console.log('selectedFiles.length:', selectedFiles.length);
+console.log('selectedFiles type:', typeof selectedFiles);
+console.log('selectedFiles is array:', Array.isArray(selectedFiles));
+// Check if files are displayed in UI
+const filesDisplayed = document.getElementById('files-list').children.length;
+console.log('Files displayed in UI:', filesDisplayed);
+// File validation is now optional - no need to check if files are selected
+console.log('ℹ️ No files selected - this is now optional');
+console.log('✅ File validation passed, selectedFiles.length:', selectedFiles.length);
+// Show confirmation modal instead of direct submission
+showConfirmationModal();
+return;
+const submitBtn = document.getElementById('submitBtn');
+submitBtn.textContent = '📝 Nộp bài thi';
+submitBtn.disabled = false;
+alert('❌ ' + message);
+clearInterval(uploadProgressInterval);
+uploadProgressInterval = null;
+const overlay = document.getElementById('loadingOverlay');
+if (overlay) overlay.style.display = 'none';
+const controller = new AbortController();
+const timeoutId = setTimeout(() => controller.abort(), 600000);
+method: 'POST',
+body: formData,
+signal: controller.signal,
+'X-Requested-With': 'XMLHttpRequest'
+throw new Error('HTTP ' + response.status + ': ' + response.statusText);
+return response.text();
+clearTimeout(timeoutId);
+let responseData;
+responseData = JSON.parse(data);
+clearInterval(uploadProgressInterval);
+uploadProgressInterval = null;
+const progressFill = document.getElementById('progressFill');
+const progressStatus = document.getElementById('progressStatus');
+if (progressFill) progressFill.style.width = '100%';
+if (progressStatus) progressStatus.textContent = '✅ Nộp bài thành công!';
+const step3 = document.getElementById('step3');
+const step4 = document.getElementById('step4');
+if (step3) step3.textContent = '✅ Lưu dữ liệu...';
+if (step4) step4.textContent = '✅ Hoàn tất...';
+setTimeout(() => window.location.reload(), 1500);
+resetSubmitUiOnError(responseData.error || 'Có lỗi xảy ra khi nộp bài. Vui lòng thử lại.');
+clearTimeout(timeoutId);
+resetSubmitUiOnError('Upload timeout! Vui lòng thử lại.');
+resetSubmitUiOnError(error.message || 'Có lỗi xảy ra khi nộp bài.');
+const formData = new FormData();
+const form = document.getElementById('examSubmissionForm');
+const formElements = form.querySelectorAll('input, textarea, select');
+// handled separately
+formData.append(element.name, element.value);
+formData.append('exam_submit', '1');
+formData.append('submission_files[]', file);
+clearDraft();
+return postSubmissionForm(formData);
+AITC_GCS_UPLOAD.uploadAll(selectedFiles)
+formData.append('gcs_files', JSON.stringify(gcsFiles || []));
+const step3 = document.getElementById('step3');
+if (step3) step3.textContent = '⏳ Lưu dữ liệu...';
+clearDraft();
+return postSubmissionForm(formData);
+resetSubmitUiOnError(err.message || 'Upload thất bại. Vui lòng thử lại.');
+return;
+finishLocal();
+const countdownElement = document.getElementById('deadline-countdown');
+if (!countdownElement) return;
+const deadline = parseInt(countdownElement.dataset.deadline);
+const endTime = parseInt(countdownElement.dataset.endTime);
+// Use server time for consistency
+const serverTime = 1791252137;
+const now = Math.floor(Date.now() / 1000);
+const timeDiff = now - serverTime;
+const adjustedNow = serverTime + timeDiff;
+const deadlineRemaining = deadline - adjustedNow;
+const endTimeRemaining = endTime - adjustedNow;
+// Check deadline first
+countdownElement.textContent = 'Đã hết hạn nộp bài';
+countdownElement.className = 'deadline-status closed';
+countdownElement.textContent = 'Cổng nộp bài đang mở';
+countdownElement.className = 'deadline-status active';
+countdownElement.textContent = 'Chưa đến thời gian nộp bài';
+countdownElement.className = 'deadline-status upcoming';
+const countdownElement = document.getElementById('exam-end-countdown');
+if (!countdownElement) return;
+const startTime = parseInt(countdownElement.dataset.startTime);
+const endTime = parseInt(countdownElement.dataset.endTime);
+const deadline = parseInt(countdownElement.dataset.deadline);
+// Use server time for consistency
+const serverTime = 1791252137;
+const now = Math.floor(Date.now() / 1000);
+const timeDiff = now - serverTime;
+const adjustedNow = serverTime + timeDiff;
+const deadlineRemaining = deadline - adjustedNow;
+// Check deadline first
+countdownElement.textContent = 'Đã hết hạn nộp bài';
+countdownElement.style.color = '#dc3545';
+// Chưa đến thời gian bắt đầu thi
+const timeToStart = startTime - adjustedNow;
+// Nếu countdown về 0 hoặc âm thì reload trang
+window.location.reload();
+return;
+const days = Math.floor(timeToStart / 86400);
+const hours = Math.floor((timeToStart % 86400) / 3600);
+const minutes = Math.floor((timeToStart % 3600) / 60);
+const seconds = timeToStart % 60;
+let timeString = '';
+countdownElement.textContent = 'Bắt đầu sau ' + timeString;
+countdownElement.style.color = '#6c757d';
+// Đã kết thúc thời gian thi
+countdownElement.textContent = 'Đã kết thúc';
+countdownElement.style.color = '#ffc107';
+// Đang trong thời gian thi - hiển thị thời gian còn lại
+const remaining = endTime - adjustedNow;
+const days = Math.floor(remaining / 86400);
+const hours = Math.floor((remaining % 86400) / 3600);
+const minutes = Math.floor((remaining % 3600) / 60);
+const seconds = remaining % 60;
+let timeString = '';
+countdownElement.textContent = 'Còn lại ' + timeString;
+// Change color based on remaining time
+countdownElement.style.color = '#dc3545';
+countdownElement.style.color = '#ffc107';
+countdownElement.style.color = '#28a745';
+const countdownElement = document.getElementById('countdown-text');
+const countdownContainer = document.getElementById('submission-countdown');
+if (!countdownElement || !countdownContainer) return;
+const deadline = parseInt(countdownContainer.dataset.deadline);
+const now = Math.floor(Date.now() / 1000);
+const remaining = deadline - now;
+countdownElement.textContent = '00:00:00';
+const submitBtn = document.getElementById('submitBtn');
+submitBtn.disabled = true;
+submitBtn.textContent = '🔒 Đã hết hạn nộp bài';
+return;
+const days = Math.floor(remaining / 86400);
+const hours = Math.floor((remaining % 86400) / 3600);
+const minutes = Math.floor((remaining % 3600) / 60);
+const seconds = remaining % 60;
+let timeString = '';
+countdownElement.textContent = timeString;
+const endTime = 1791259200;
+const deadline = 1791259800;
+// Use server time for consistency
+const serverTime = 1791252137;
+const now = Math.floor(Date.now() / 1000);
+const timeDiff = now - serverTime;
+const adjustedNow = serverTime + timeDiff;
+const submitBtn = document.getElementById('submitBtn');
+const form = document.getElementById('examSubmissionForm');
+submitBtn.disabled = true;
+submitBtn.textContent = '🔒 Đã hết hạn nộp bài';
+const warning = document.createElement('div');
+warning.className = 'deadline-warning';
+warning.innerHTML = '⚠️ Thời gian nộp bài đã kết thúc. Cổng nộp bài đã đóng.';
+form.insertBefore(warning, form.firstChild);
+submitBtn.disabled = false;
+submitBtn.textContent = '📝 Nộp bài thi';
+const warning = document.createElement('div');
+warning.className = 'time-warning';
+warning.innerHTML = '⚠️ Thời gian thi đã kết thúc. Bạn vẫn có thể nộp bài cho đến hết deadline.';
+form.insertBefore(warning, form.firstChild);
+const recaptchaResponse = grecaptcha.getResponse();
+const hiddenField = document.getElementById('g-recaptcha-response');
+hiddenField.value = recaptchaResponse;
+const successIndicator = document.createElement('div');
+successIndicator.className = 'recaptcha-success';
+successIndicator.textContent = '✅ reCAPTCHA đã xác thực!';
+document.body.appendChild(successIndicator);
+successIndicator.style.opacity = '1';
+successIndicator.style.opacity = '0';
+setTimeout(() => successIndicator.remove(), 500);
+document.getElementById('submitBtn').disabled = false;
+document.getElementById('g-recaptcha-response').value = '';
+const expiredIndicator = document.createElement('div');
+expiredIndicator.className = 'recaptcha-expired';
+expiredIndicator.textContent = '⚠️ reCAPTCHA đã hết hạn! Vui lòng xác thực lại.';
+document.body.appendChild(expiredIndicator);
+expiredIndicator.style.opacity = '1';
+expiredIndicator.style.opacity = '0';
+setTimeout(() => expiredIndicator.remove(), 500);
+document.getElementById('submitBtn').disabled = true;
+loadDraft();
+setupAutoSave();
+checkExamTime();
+updateCountdown();
+updateExamEndCountdown();
+updateDeadlineCountdown();
+setInterval(updateCountdown, 1000);
+setInterval(updateExamEndCountdown, 1000);
+setInterval(updateDeadlineCountdown, 1000);
+setInterval(checkExamTime, 60000);
+© 2026 Thực chiến AI. Tất cả quyền được bảo lưu.
+Thể lệ cuộc thi
+Liên hệ
+Trang chủ
+var t, e = location.hash.substring(1);
+/^[A-z0-9_-]+$/.test(e) && (t = document.getElementById(e)) && (/^(?:a|select|input|button|textarea)$/i.test(t.tagName) || (t.tabIndex = -1), t.focus())
+//# sourceURL=main-script-js-extra
+//# sourceURL=googlesitekit-events-provider-content-events-js-before
+/* Exam Detail Page Styles */
+min-height: 100vh;
+margin-bottom: 40px;
+margin-bottom: 20px;
+font-size: 14px;
+text-decoration: none;
+justify-content: space-between;
+align-items: center;
+border-radius: 12px;
+box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+border-left: 5px solid #007bff;
+font-size: 28px;
+font-weight: 700;
+gap: 10px;
+flex-direction: column;
+align-items: flex-end;
+/* Timing Card */
+border-radius: 12px;
+margin-bottom: 30px;
+box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+border-left: 5px solid #28a745;
+align-items: center;
+justify-content: space-between;
+margin-top: 20px;
+align-items: center;
+gap: 15px;
+text-align: left;
+transform: scale(1.05);
+transition: all 0.3s ease;
+transition: all 0.3s ease;
+opacity: 0.8;
+transition: all 0.3s ease;
+width: 60px;
+height: 60px;
+border-radius: 50%;
+align-items: center;
+justify-content: center;
+font-size: 24px;
+border: 3px solid #dee2e6;
+animation: pulse-blue 2s infinite;
+box-shadow: 0 4px 15px rgba(0,123,255,0.3);
+transform: scale(1.1);
+box-shadow: 0 4px 15px rgba(40,167,69,0.3);
+font-size: 16px;
+font-weight: 700;
+font-size: 18px;
+font-weight: 700;
+font-size: 14px;
+font-weight: 600;
+font-weight: 700;
+font-size: 16px;
+animation: blink 1s infinite;
+animation: blink 1s infinite;
+font-weight: 700;
+font-size: 14px;
+font-weight: 600;
+font-weight: 700;
+/* Section Cards */
+border-radius: 12px;
+margin-bottom: 30px;
+box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+font-size: 22px;
+font-weight: 700;
+border-bottom: 1px solid #e9ecef;
+padding-bottom: 15px;
+/* Availability Notices */
+align-items: center;
+gap: 15px;
+border-radius: 8px;
+margin-bottom: 20px;
+border: 1px solid #28a745;
+border: 1px solid #ffc107;
+border: 1px solid #dc3545;
+font-size: 24px;
+/* Private Data Section */
+border: 2px solid #ffc107;
+border-radius: 8px;
+font-weight: 700;
+/* Attachments */
+grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+gap: 15px;
+margin-top: 15px;
+align-items: center;
+gap: 15px;
+border: 1px solid #e9ecef;
+border-radius: 8px;
+text-decoration: none;
+transition: all 0.3s ease;
+transform: translateY(-2px);
+box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+font-size: 24px;
+flex: 1;
+font-weight: 600;
+margin-bottom: 5px;
+font-size: 12px;
+/* Submission Status */
+border-radius: 8px;
+border: 1px solid #28a745;
+align-items: center;
+gap: 15px;
+margin-bottom: 20px;
+font-size: 24px;
+gap: 30px;
+margin-bottom: 20px;
+align-items: center;
+gap: 10px;
+font-weight: 600;
+font-size: 18px;
+font-weight: 700;
+border: 1px solid #dee2e6;
+border-radius: 8px;
+margin-top: 10px;
+line-height: 1.6;
+/* Format List */
+list-style: none;
+border-bottom: 1px solid #e9ecef;
+/* Submission Form Styles */
+border: 1px solid #e9ecef;
+border-radius: 12px;
+margin-top: 20px;
+font-size: 18px;
+font-weight: 600;
+flex-direction: column;
+gap: 20px;
+flex-direction: column;
+gap: 8px;
+font-weight: 600;
+font-size: 14px;
+.form-input,
+border: 2px solid #e9ecef;
+border-radius: 8px;
+font-size: 14px;
+transition: all 0.3s ease;
+.form-input:focus,
+outline: none;
+box-shadow: 0 0 0 3px rgba(0,123,255,0.1);
+border: 2px dashed #dee2e6;
+border-radius: 8px;
+cursor: pointer;
+transition: all 0.3s ease;
+font-size: 12px;
+font-style: italic;
+/* File Formats Info */
+margin-top: 15px;
+border: 1px solid #e9ecef;
+border-radius: 8px;
+font-size: 14px;
+font-weight: 600;
+grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+gap: 12px;
+align-items: center;
+gap: 10px;
+border: 1px solid #dee2e6;
+border-radius: 6px;
+transition: all 0.3s ease;
+box-shadow: 0 2px 8px rgba(0,123,255,0.1);
+font-size: 20px;
+width: 30px;
+text-align: center;
+flex-direction: column;
+gap: 2px;
+font-size: 13px;
+font-weight: 600;
+font-size: 11px;
+gap: 15px;
+justify-content: center;
+margin-top: 10px;
+.submit-btn,
+border: none;
+border-radius: 8px;
+font-weight: 600;
+font-size: 14px;
+cursor: pointer;
+transition: all 0.3s ease;
+text-decoration: none;
+transform: translateY(-2px);
+box-shadow: 0 4px 15px rgba(40,167,69,0.3);
+transform: translateY(-2px);
+box-shadow: 0 4px 15px rgba(108,117,125,0.3);
+/* Success Notice */
+border: 1px solid #28a745;
+border-radius: 12px;
+margin-bottom: 30px;
+box-shadow: 0 4px 15px rgba(40,167,69,0.2);
+transition: opacity 0.5s ease;
+align-items: flex-start;
+gap: 15px;
+font-size: 24px;
+font-size: 16px;
+margin-bottom: 8px;
+font-size: 14px;
+/* Invited Member View Styles */
+border: 2px solid #17a2b8;
+border-bottom: 2px solid #17a2b8;
+padding-bottom: 10px;
+margin-bottom: 20px;
+border: 1px solid #17a2b8;
+border-radius: 8px;
+border-bottom: 1px solid #17a2b8;
+border: 1px solid #17a2b8;
+border-radius: 8px;
+align-items: center;
+gap: 15px;
+font-size: 24px;
+font-size: 16px;
+margin-bottom: 5px;
+font-size: 14px;
+/* Preview Modal */
+position: fixed;
+top: 0;
+left: 0;
+width: 100%;
+height: 100%;
+align-items: center;
+justify-content: center;
+z-index: 9999;
+animation: fadeIn 0.3s ease;
+border-radius: 12px;
+max-width: 500px;
+width: 90%;
+max-height: 80vh;
+overflow-y: auto;
+box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+animation: slideUp 0.3s ease;
+justify-content: space-between;
+align-items: center;
+border-bottom: 1px solid #e9ecef;
+border-radius: 12px 12px 0 0;
+font-size: 18px;
+font-weight: 600;
+border: none;
+font-size: 24px;
+cursor: pointer;
+width: 30px;
+height: 30px;
+align-items: center;
+justify-content: center;
+border-radius: 50%;
+transition: all 0.3s ease;
+margin-bottom: 20px;
+padding-bottom: 15px;
+border-bottom: 1px solid #f8f9fa;
+border-bottom: none;
+margin-bottom: 0;
+font-size: 14px;
+margin-bottom: 8px;
+font-size: 14px;
+line-height: 1.5;
+word-break: break-word;
+/* Action Buttons */
+gap: 15px;
+justify-content: center;
+margin-top: 40px;
+flex-wrap: wrap;
+border-radius: 8px;
+text-decoration: none;
+font-weight: 700;
+text-align: center;
+transition: all 0.3s ease;
+border: 2px solid transparent;
+animation: glow 2s ease-in-out infinite alternate;
+/* Auto-save is silent - no UI needed */
+/* reCAPTCHA Styles */
+margin-top: 20px;
+/* Form Messages */
+margin-bottom: 20px;
+border-radius: 8px;
+font-weight: 600;
+border: 1px solid #c3e6cb;
+border: 1px solid #f5c6cb;
+/* Required Field */
+font-weight: 700;
+font-size: 0.85em;
+font-weight: normal;
+margin-top: 5px;
+line-height: 1.4;
+/* Confirmation Modal */
+position: fixed;
+top: 0;
+left: 0;
+width: 100%;
+height: 100%;
+z-index: 10000;
+align-items: center;
+justify-content: center;
+backdrop-filter: blur(5px);
+border-radius: 16px;
+max-width: 650px;
+width: 100%;
+max-height: 85vh;
+overflow-y: auto;
+box-shadow: 0 25px 50px rgba(0, 0, 0, 0.4);
+animation: modalSlideIn 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+border: 1px solid rgba(255, 255, 255, 0.2);
+opacity: 0;
+transform: translateY(-50px) scale(0.9);
+opacity: 1;
+transform: translateY(0) scale(1);
+justify-content: space-between;
+align-items: center;
+border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+border-radius: 16px 16px 0 0;
+position: relative;
+overflow: hidden;
+content: '';
+position: absolute;
+top: 0;
+left: 0;
+right: 0;
+bottom: 0;
+pointer-events: none;
+font-size: 1.5em;
+font-weight: 700;
+text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+position: relative;
+z-index: 1;
+border: 2px solid rgba(255, 255, 255, 0.3);
+font-size: 20px;
+cursor: pointer;
+width: 36px;
+height: 36px;
+align-items: center;
+justify-content: center;
+border-radius: 50%;
+transition: all 0.3s ease;
+position: relative;
+z-index: 1;
+font-weight: bold;
+transform: scale(1.1);
+box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+margin-bottom: 30px;
+border-radius: 12px;
+box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+border: 1px solid #e9ecef;
+margin-bottom: 0;
+font-size: 1.2em;
+font-weight: 700;
+border-bottom: 3px solid #667eea;
+padding-bottom: 10px;
+position: relative;
+content: '';
+position: absolute;
+bottom: -3px;
+left: 0;
+width: 30px;
+height: 3px;
+border-radius: 2px;
+margin-bottom: 5px;
+align-items: flex-start;
+border-bottom: 1px solid #f8f9fa;
+margin-bottom: 0;
+border-bottom: none;
+font-weight: 700;
+min-width: 140px;
+margin-right: 20px;
+font-size: 0.95em;
+text-transform: uppercase;
+letter-spacing: 0.5px;
+flex: 1;
+word-break: break-word;
+font-size: 1.05em;
+line-height: 1.5;
+text-decoration: none;
+word-break: break-all;
+text-decoration: underline;
+border: 2px solid #ffc107;
+border-radius: 12px;
+margin-top: 15px;
+position: relative;
+box-shadow: 0 4px 12px rgba(255, 193, 7, 0.2);
+font-size: 1em;
+font-weight: 500;
+line-height: 1.6;
+margin-bottom: 0;
+justify-content: center;
+gap: 20px;
+border-top: 1px solid rgba(0, 0, 0, 0.1);
+border-radius: 0 0 16px 16px;
+box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.8);
+border: none;
+border-radius: 12px;
+font-size: 1.1em;
+font-weight: 700;
+cursor: pointer;
+transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+min-width: 140px;
+text-transform: uppercase;
+letter-spacing: 0.5px;
+position: relative;
+overflow: hidden;
+box-shadow: 0 4px 12px rgba(108, 117, 125, 0.3);
+transform: translateY(-2px);
+box-shadow: 0 8px 20px rgba(108, 117, 125, 0.4);
+transform: translateY(0);
+box-shadow: 0 2px 8px rgba(108, 117, 125, 0.3);
+box-shadow: 0 4px 12px rgba(40, 167, 69, 0.3);
+transform: translateY(-2px);
+box-shadow: 0 8px 20px rgba(40, 167, 69, 0.4);
+transform: translateY(0);
+box-shadow: 0 2px 8px rgba(40, 167, 69, 0.3);
+content: '';
+position: absolute;
+top: 0;
+left: -100%;
+width: 100%;
+height: 100%;
+transition: left 0.5s;
+left: 100%;
+/* Selected Files Info Display */
+margin-top: 15px;
+border: 1px solid #dee2e6;
+border-radius: 8px;
+justify-content: space-between;
+align-items: center;
+margin-bottom: 15px;
+border-radius: 6px;
+font-weight: 600;
+flex-direction: column;
+gap: 10px;
+margin-bottom: 15px;
+border: none;
+border-radius: 6px;
+cursor: pointer;
+font-size: 14px;
+transition: background-color 0.3s;
+text-decoration: underline;
+cursor: pointer;
+font-weight: 600;
+text-decoration: none;
+align-items: center;
+gap: 15px;
+border: 1px solid #e9ecef;
+border-radius: 6px;
+box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+font-size: 24px;
+flex: 1;
+font-size: 16px;
+margin-bottom: 5px;
+word-break: break-all;
+max-width: 70%;
+overflow: hidden;
+text-overflow: ellipsis;
+white-space: nowrap;
+font-size: 14px;
+border: none;
+border-radius: 6px;
+cursor: pointer;
+font-weight: bold;
+font-size: 14px;
+transition: all 0.2s ease;
+min-width: 32px;
+height: 32px;
+align-items: center;
+justify-content: center;
+transform: scale(1.05);
+/* Time Warning */
+border: 1px solid #ffc107;
+border-radius: 8px;
+margin-bottom: 20px;
+font-weight: 600;
+text-align: center;
+animation: pulse-warning 2s infinite;
+font-size: 18px;
+/* Animations */
+/* Responsive Design */
+flex-direction: column;
+align-items: flex-start;
+gap: 20px;
+flex-direction: column;
+gap: 20px;
+transform: rotate(90deg);
+flex-direction: column;
+gap: 15px;
+flex-direction: column;
+align-items: center;
+width: 100%;
+max-width: 300px;
+/* Countdown Styles */
+margin-top: 15px;
+border-radius: 8px;
+border: 1px solid #e9ecef;
+font-weight: bold;
+font-size: 14px;
+text-align: center;
+font-family: 'Courier New', monospace;
+font-size: 24px;
+font-weight: bold;
+border-radius: 8px;
+border: 2px solid #28a745;
+min-width: 120px;
+transition: all 0.3s ease;
+animation: pulse 1s infinite;
+/* Deadline Info Section Styles */
+margin-top: 20px;
+align-items: center;
+border-radius: 10px;
+border: 2px solid #bbdefb;
+box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+font-size: 24px;
+margin-right: 15px;
+flex-shrink: 0;
+font-size: 16px;
+font-weight: bold;
+font-family: 'Courier New', monospace;
+font-size: 18px;
+font-weight: bold;
+font-size: 14px;
+font-weight: 500;
+border-radius: 4px;
+border: 1px solid #a5d6a7;
+border: 1px solid #ef9a9a;
+border: 1px solid #ffcc02;
+/* Team Data Card Styles */
+font-size: 18px;
+font-weight: bold;
+align-items: center;
+gap: 8px;
+border: 1px solid #e1bee7;
+border-radius: 8px;
+font-family: 'Courier New', monospace;
+font-size: 14px;
+line-height: 1.6;
+word-break: break-all;
+font-weight: bold;
+border-radius: 3px;
+font-family: 'Courier New', monospace;
+/* Team Data Status Card Styles */
+border: 2px solid #ff9800;
+border-radius: 12px;
+margin-bottom: 20px;
+box-shadow: 0 4px 12px rgba(255, 152, 0, 0.15);
+/* View Only Notice Styles */
+border: 2px solid #2196f3;
+border-radius: 12px;
+box-shadow: 0 4px 15px rgba(33, 150, 243, 0.15);
+align-items: center;
+gap: 20px;
+font-size: 32px;
+flex-shrink: 0;
+font-size: 18px;
+font-weight: 700;
+margin-bottom: 8px;
+line-height: 1.6;
+border: 2px solid #6c757d;
+border-radius: 12px;
+margin-bottom: 30px;
+box-shadow: 0 4px 15px rgba(108, 117, 125, 0.1);
+font-size: 18px;
+font-weight: bold;
+align-items: center;
+gap: 8px;
+border: 1px solid #ffcc02;
+border-radius: 8px;
+text-align: center;
+font-weight: 500;
+font-size: 14px;
+font-style: italic;
+/* Private Data Section Styles */
+margin-top: 20px;
+/* Content Display Styles for HTML content */
+.section-content,
+.exam-description,
+/* Reset and normalize HTML content */
+line-height: 1.6;
+word-wrap: break-word;
+overflow-wrap: break-word;
+overflow: hidden;
+/* Handle images in content */
+.section-content img,
+.exam-description img,
+max-width: 100%;
+height: auto;
+border-radius: 8px;
+box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+border: 1px solid #e9ecef;
+/* Handle divs and containers */
+.section-content div,
+.exam-description div,
+/* Handle paragraphs */
+.section-content p,
+.exam-description p,
+line-height: 1.6;
+/* Handle headings */
+.section-content h1,
+.section-content h2,
+.section-content h3,
+.section-content h4,
+.section-content h5,
+.section-content h6,
+.exam-description h1,
+.exam-description h2,
+.exam-description h3,
+.exam-description h4,
+.exam-description h5,
+.exam-description h6,
+.team-data-content h1,
+.team-data-content h2,
+.team-data-content h3,
+.team-data-content h4,
+.team-data-content h5,
+font-weight: 600;
+line-height: 1.3;
+.section-content h1,
+.exam-description h1,
+font-size: 24px;
+border-bottom: 2px solid #007bff;
+padding-bottom: 10px;
+.section-content h2,
+.exam-description h2,
+font-size: 20px;
+.section-content h3,
+.exam-description h3,
+font-size: 18px;
+/* Handle lists */
+.section-content ul,
+.section-content ol,
+.exam-description ul,
+.exam-description ol,
+.team-data-content ul,
+padding-left: 25px;
+.section-content li,
+.exam-description li,
+line-height: 1.5;
+/* Handle tables */
+.section-content table,
+.exam-description table,
+width: 100%;
+border-collapse: collapse;
+border-radius: 8px;
+overflow: hidden;
+box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+.section-content th,
+.section-content td,
+.exam-description th,
+.exam-description td,
+.team-data-content th,
+text-align: left;
+border-bottom: 1px solid #e9ecef;
+.section-content th,
+.exam-description th,
+font-weight: 600;
+/* Handle code blocks */
+.section-content code,
+.exam-description code,
+border-radius: 4px;
+font-family: 'Courier New', monospace;
+font-size: 14px;
+border: 1px solid #e9ecef;
+.section-content pre,
+.exam-description pre,
+border-radius: 8px;
+border: 1px solid #e9ecef;
+overflow-x: auto;
+font-family: 'Courier New', monospace;
+font-size: 14px;
+line-height: 1.4;
+.section-content pre code,
+.exam-description pre code,
+border: none;
+/* Handle blockquotes */
+.section-content blockquote,
+.exam-description blockquote,
+border-left: 4px solid #007bff;
+border-radius: 0 8px 8px 0;
+font-style: italic;
+/* Handle links */
+.section-content a,
+.exam-description a,
+text-decoration: none;
+border-bottom: 1px solid transparent;
+transition: all 0.3s ease;
+.section-content a:hover,
+.exam-description a:hover,
+/* Handle horizontal rules */
+.section-content hr,
+.exam-description hr,
+border: none;
+height: 2px;
+/* Handle strong and emphasis */
+.section-content strong,
+.section-content b,
+.exam-description strong,
+.exam-description b,
+.team-data-content strong,
+font-weight: 600;
+.section-content em,
+.section-content i,
+.exam-description em,
+.exam-description i,
+.team-data-content em,
+font-style: italic;
+/* File name truncation styles */
+align-items: center;
+gap: 15px;
+border: 1px solid #e9ecef;
+border-radius: 6px;
+margin-bottom: 10px;
+font-size: 20px;
+flex-shrink: 0;
+flex: 1;
+min-width: 0; /* Important for text truncation */
+font-weight: 600;
+font-size: 14px;
+margin-bottom: 5px;
+overflow: hidden;
+text-overflow: ellipsis;
+white-space: nowrap;
+max-width: 100%;
+.submitted-file .file-size,
+font-size: 12px;
+margin-right: 10px;
+flex-shrink: 0;
+text-decoration: none;
+font-size: 12px;
+margin-right: 5px;
+text-decoration: underline;
+/* Responsive adjustments for content */
+.section-content img,
+.exam-description img,
+.section-content h1,
+.exam-description h1,
+font-size: 20px;
+.section-content h2,
+.exam-description h2,
+font-size: 18px;
+.section-content table,
+.exam-description table,
+font-size: 14px;
+.section-content th,
+.section-content td,
+.exam-description th,
+.exam-description td,
+.team-data-content th,
+/* Mobile file name truncation */
+font-size: 13px;
+font-size: 14px;
+max-width: 60%;
