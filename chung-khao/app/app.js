@@ -88,7 +88,7 @@ setInterval(() => updateHeroSlide(heroIndex + 1), 5000);
 function escapeHtml(value){return String(value).replace(/[&<>"']/g,char=>({"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;","'":"&#39;"}[char]));}
 function renderPlaces(filter="all"){
  const chosen=places.filter(place=>filter==="all"||place.filter===filter||(filter==="near"&&place.near));
- grid.innerHTML=chosen.map((place,index)=>`<article class="destination-card"><div class="destination-image${place.image?"":" is-placeholder"}">${place.image?`<img src="${place.image}" alt="${escapeHtml(place.alt)}" loading="lazy"/>`:`<div class="image-placeholder" aria-label="Chưa có ảnh đã xác minh đúng địa điểm"><span>CHƯA CÓ ẢNH<br/>ĐÃ XÁC MINH</span><i aria-hidden="true">✳</i></div>`}<span class="image-index">ĐIỂM ${String(index+1).padStart(2,"0")}</span></div><div class="card-body">${place.imageSource?`<a class="photo-credit" href="${escapeHtml(place.imageSource)}" target="_blank" rel="noopener noreferrer" aria-label="Nguồn ảnh ${escapeHtml(place.name)}">Ảnh: ${escapeHtml(place.imageCredit)} ↗</a>`:""}<div class="card-meta"><span>${escapeHtml(place.category)}</span><span>↗</span></div><h3>${escapeHtml(place.name)}</h3><p>${escapeHtml(place.description)}</p><a class="place-source" href="${escapeHtml(place.source)}" target="_blank" rel="noopener noreferrer" aria-label="Đọc nguồn giới thiệu ${escapeHtml(place.name)}">Đọc giới thiệu · ${escapeHtml(place.sourceLabel)} ↗</a><div class="card-foot"><span class="card-cost">${escapeHtml(place.feeLabel)}<small>${escapeHtml(place.distance)}</small></span><span class="card-more" aria-hidden="true">↗</span></div></div></article>`).join("");
+ grid.innerHTML=chosen.map((place,index)=>`<article class="destination-card"><div class="destination-image${place.image?"":" is-placeholder"}">${place.image?`<img src="${place.image}" alt="${escapeHtml(place.alt)}" loading="lazy"/>`:`<div class="image-placeholder" aria-label="Chưa có ảnh đã xác minh đúng địa điểm"><span>CHƯA CÓ ẢNH<br/>ĐÃ XÁC MINH</span><i aria-hidden="true">✳</i></div>`}<span class="image-index">ĐIỂM ${String(index+1).padStart(2,"0")}</span></div><div class="card-body">${place.imageSource?`<a class="photo-credit" href="${escapeHtml(place.imageSource)}" target="_blank" rel="noopener noreferrer" aria-label="Nguồn ảnh ${escapeHtml(place.name)}">Ảnh: ${escapeHtml(place.imageCredit)} ↗</a>`:""}<div class="card-meta"><span>${escapeHtml(place.category)}</span></div><h3>${escapeHtml(place.name)}</h3><p>${escapeHtml(place.description)}</p><a class="place-source" href="${escapeHtml(place.source)}" target="_blank" rel="noopener noreferrer" aria-label="Đọc nguồn giới thiệu ${escapeHtml(place.name)}">Đọc giới thiệu · ${escapeHtml(place.sourceLabel)} ↗</a><div class="card-foot"><span class="card-cost">${escapeHtml(place.feeLabel)}<small>${escapeHtml(place.distance)}</small></span></div></div></article>`).join("");
  filterResult.textContent=filter==="all"?`${chosen.length} điểm từ bộ dữ liệu`:`${chosen.length} điểm phù hợp bộ lọc`;
 }
 function renderFoods(){
@@ -188,8 +188,6 @@ async function makePlan(event){
   const inputs = collectInputs();
   const reqId = ++state.requestId;
   state.ai = null;
-  const aiBtn = document.querySelector("#ai-button");
-  aiBtn.disabled = true;
   setLoading("Đang ghép cụm điểm và tính dự toán…");
   try{
     const res = await fetch("/api/lap-lich", { method:"POST", headers:{"Content-Type":"application/json"}, body:JSON.stringify(inputs) });
@@ -199,40 +197,10 @@ async function makePlan(event){
     state.plans = data;
     state.selectedCode = data.default_option || "A";
     renderPlans();
-    aiBtn.disabled = false;
   }catch(e){
     if(reqId === state.requestId){
       setLoading(e.message || "Không kết nối được máy chủ.");
     }
-  }
-}
-
-async function askAI(){
-  if(!state.plans) return;
-  const inputs = collectInputs();
-  const reqId = ++state.requestId;
-  const btn = document.querySelector("#ai-button");
-  btn.disabled = true;
-  btn.textContent = "AI đang chọn…";
-  setLoading("Đang gọi AI qua gateway BTC để chọn phương án…");
-  try{
-    const res = await fetch("/api/tu-van", { method:"POST", headers:{"Content-Type":"application/json"}, body:JSON.stringify(inputs) });
-    const data = await res.json().catch(()=>({}));
-    if(reqId !== state.requestId) return;
-    if(!res.ok || !data.ok) throw new Error(data.error || "Không lấy được gợi ý AI.");
-    state.ai = data.ai;
-    state.plans.options = data.options;
-    state.plans.responsible_rules = data.responsible_rules;
-    state.selectedCode = data.ai.selected_code || state.selectedCode;
-    renderPlans();
-  }catch(e){
-    if(reqId === state.requestId){
-      state.ai = { is_fallback:true, reasoning:"AI tạm thời chưa khả dụng. Bạn vẫn có thể xem và chỉnh phương án theo quy tắc.", practical_tip:"—", responsible_reminder:"—" };
-      renderPlans();
-    }
-  }finally{
-    btn.disabled = false;
-    btn.textContent = "Lấy gợi ý AI ✳";
   }
 }
 
@@ -271,4 +239,3 @@ async function swapDestination(oldId){
 }
 
 document.querySelector("#planner-form").addEventListener("submit", makePlan);
-document.querySelector("#ai-button").addEventListener("click", askAI);
